@@ -56,6 +56,11 @@
 	if(!length(dildo_designs))
 		populate_dildo_designs()
 
+	//random color variation on start. Because why not?
+	current_color = pick(dildo_designs)
+	update_icon_state()
+	update_icon()
+
 /obj/item/clothing/sextoy/dildo/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
@@ -149,6 +154,13 @@
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+
+//examine stuff
+
+/obj/item/clothing/sextoy/dildo/examine(mob/user)
+	.=..()
+	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
+
 
 ///////////////////////
 ///POLYCHROMIC DILDO///
@@ -605,7 +617,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	throwforce = 0
 	item_flags = ABSTRACT | HAND_ITEM
 	moth_edible = FALSE
-	
+
 /obj/item/clothing/sextoy/dildo_side/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
