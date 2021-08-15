@@ -37,6 +37,11 @@
 	if(!length(fleshlight_designs))
 		populate_fleshlight_designs()
 
+	//random color variation on start. Because why not?
+	current_color = pick(fleshlight_designs)
+	update_icon_state()
+	update_icon()
+
 /obj/item/clothing/sextoy/fleshlight/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
@@ -119,3 +124,10 @@
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+
+//examine stuff
+
+/obj/item/clothing/sextoy/fleshlight/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

@@ -186,3 +186,9 @@
 		return
 	else
 		return ..()
+
+//examine stuff
+
+/obj/structure/pole/examine(mob/user)
+	.=..()
+	. += "<span class='notice'>Click on \the [src.name] with multitool to customize it.</span>"
