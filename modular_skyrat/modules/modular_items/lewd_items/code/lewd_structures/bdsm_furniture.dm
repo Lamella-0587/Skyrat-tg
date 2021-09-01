@@ -1,13 +1,21 @@
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
+<<<<<<< HEAD
 	desc = "This is a latex bed with D-rings on sides. Looks comfortable."
+=======
+	desc = "A latex bed with D-rings on the sides. Looks comfortable."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
+<<<<<<< HEAD
 	desc = "A wrench is required to construct."
+=======
+	desc = "Construction requires a wrench."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "bdsm_bed_kit"
@@ -18,9 +26,15 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and inflating latex pillows...</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, "<span class='notice'>You construct the bdsm bed!</span>")
+=======
+			to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
+			if(P.use_tool(src, user, 8 SECONDS, volume=50))
+				to_chat(user, span_notice("You assemble the bdsm bed."))
+>>>>>>> upstream/master
 				var/obj/structure/bed/bdsm_bed/C = new
 				C.loc = loc
 				qdel(src)
@@ -41,9 +55,15 @@
 /obj/structure/bed/bdsm_bed/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You start to unfastening the frame of bdsm bed...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
 			to_chat(user, "<span class='notice'>You take down the BDSM bed!</span>")
+=======
+		to_chat(user, span_notice("You begin unfastening the frame of bdsm bed and deflating the latex pillows..."))
+		if(P.use_tool(src, user, 8 SECONDS, volume=50))
+			to_chat(user, span_notice("You disassemble the BDSM bed."))
+>>>>>>> upstream/master
 			var/obj/item/bdsm_bed_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()
@@ -62,7 +82,11 @@
 
 /obj/structure/chair/x_stand
 	name = "x stand"
+<<<<<<< HEAD
 	desc = "Why you even call it X stand? It doesn't even in X form. Anyway you can buckle someone to it"
+=======
+	desc = "A stand for buckling people in an X shape."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "xstand"
 	max_buckled_mobs = 1
@@ -137,6 +161,7 @@
 				// Place to describe failed attempt
 				return FALSE
 			// Description of a successful attempt
+<<<<<<< HEAD
 			M.visible_message("<span class='notice'>[user] unbuckles [M] from [src].</span>",\
 				"<span class='notice'>[user] unbuckles you from [src].</span>",\
 				"<span class='hear'>You hear metal clanking.</span>")
@@ -145,6 +170,16 @@
 			// Description of a successful mob attempt to unbuckle itself
 			user.visible_message("<span class='notice'>You unbuckle yourself from [src].</span>",\
 				"<span class='hear'>You hear metal clanking.</span>")
+=======
+			M.visible_message(span_notice("[user] unbuckles [M] from [src]."),\
+				span_notice("[user] unbuckles you from [src]."),\
+				span_hear("You hear metal clanking."))
+			// Description of a successful mob attempt to unbuckle one mob with another mob
+		else
+			// Description of a successful mob attempt to unbuckle itself
+			user.visible_message(span_notice("You unbuckle yourself from [src]."),\
+				span_hear("You hear metal clanking."))
+>>>>>>> upstream/master
 		add_fingerprint(user)
 		if(isliving(M.pulledby))
 			var/mob/living/L = M.pulledby
@@ -185,9 +220,15 @@
 		// Place to insert a description of a successful attempt for a user mob
 		if(buckle_mob(M, check_loc = check_loc))
 			// Description of a successful attempt to buckle a mob by another mob
+<<<<<<< HEAD
 			M.visible_message("<span class='warning'>[user] starts buckling [M] to [src]!</span>",\
 				"<span class='userdanger'>[user] starts buckling you to [src]!</span>",\
 				"<span class='hear'>You hear metal clanking.</span>")
+=======
+			M.visible_message(span_warning("[user] starts buckling [M] to [src]!"),\
+				span_userdanger("[user] starts buckling you to [src]!"),\
+				span_hear("You hear metal clanking."))
+>>>>>>> upstream/master
 		toggle_mode(user)
 
 	else
@@ -202,8 +243,13 @@
 			return FALSE
 
 		if(buckle_mob(M, check_loc = check_loc))
+<<<<<<< HEAD
 			user.visible_message("<span class='warning'>You buckles yourself to [src]!</span>",\
 				"<span class='hear'>You hear metal clanking.</span>")
+=======
+			user.visible_message(span_warning("You buckles yourself to [src]!"),\
+				span_hear("You hear metal clanking."))
+>>>>>>> upstream/master
 		toggle_mode(user)
 
 // X-Stand state switch processing
@@ -265,7 +311,11 @@
 
 /obj/item/x_stand_kit
 	name = "xstand construction kit"
+<<<<<<< HEAD
 	desc = "A wrench is required to construct."
+=======
+	desc = "Construction requires a wrench."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "xstand_kit"
@@ -276,9 +326,15 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor.</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, "<span class='notice'>You construct the x-stand!</span>")
+=======
+			to_chat(user, span_notice("You begin fastening the frame to the floor."))
+			if(P.use_tool(src, user, 8 SECONDS, volume=50))
+				to_chat(user, span_notice("You assemble the x-stand."))
+>>>>>>> upstream/master
 				var/obj/structure/chair/x_stand/C = new
 				C.loc = loc
 				qdel(src)
@@ -289,9 +345,15 @@
 /obj/structure/chair/x_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You start to unfastening the frame of x-stand...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
 			to_chat(user, "<span class='notice'>You take down the x-stand!</span>")
+=======
+		to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
+		if(P.use_tool(src, user, 8 SECONDS, volume=50))
+			to_chat(user, span_notice("You disassemble the x-stand."))
+>>>>>>> upstream/master
 			var/obj/item/x_stand_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()

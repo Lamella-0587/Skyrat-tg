@@ -1,6 +1,10 @@
 /obj/item/clothing/under/costume/lewdmaid
 	name = "latex maid costume"
+<<<<<<< HEAD
 	desc = "Maid costume for fetish reasons."
+=======
+	desc = "A maid costume made of a thick latex."
+>>>>>>> upstream/master
 	icon_state = "lewdmaid"
 	inhand_icon_state = "lewdmaid"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
@@ -95,6 +99,7 @@
 		H.update_inv_wear_suit()
 		H.fan_hud_set_fandom()
 	return TRUE
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -102,3 +107,5 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

@@ -1,6 +1,10 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
+<<<<<<< HEAD
 	desc = "Uhh... Again, WHERE i supposed to put that?!"
+=======
+	desc = "I'm meant to put that WHERE?!"
+>>>>>>> upstream/master
 	icon_state = "buttplug"
 	worn_icon_state = "buttplug"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
@@ -84,12 +88,15 @@
 	if(!length(buttplug_forms))
 		populate_buttplug_forms()
 
+<<<<<<< HEAD
 	//random color variation on start. Because why not?
 	current_color = pick(buttplug_designs)
 	current_size = pick(buttplug_forms)
 	update_icon_state()
 	update_icon()
 
+=======
+>>>>>>> upstream/master
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
@@ -126,6 +133,7 @@
 		U.adjustPleasure(1 * delta_time)
 	if(current_size == "big" && U.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
 		U.adjustPain (1*delta_time)
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -133,3 +141,5 @@
 	.=..()
 	if(color_changed == FALSE && form_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

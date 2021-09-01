@@ -1,6 +1,10 @@
 /obj/item/clothing/suit/straight_jacket/shackles
 	name = "shackles"
+<<<<<<< HEAD
 	desc = "Fancy shackles with fake locks."
+=======
+	desc = "Fancy shackles with a fake lock."
+>>>>>>> upstream/master
 	inhand_icon_state = "shackles"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
@@ -67,11 +71,14 @@
 	if(!length(shackles_designs))
 		populate_shackles_designs()
 
+<<<<<<< HEAD
 	//random color variation on start. Because why not?
 	current_color = pick(shackles_designs)
 	update_icon_state()
 	update_icon()
 
+=======
+>>>>>>> upstream/master
 /obj/item/clothing/suit/straight_jacket/shackles/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
@@ -82,7 +89,11 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
+<<<<<<< HEAD
 		to_chat(user, "<font color=purple>The shackles are restraining your body! But locks look like... Plastic?</font>")
+=======
+		to_chat(user, span_purple("The shackles are restraining your body, though the lock appears to be made of... Plastic?"))
+>>>>>>> upstream/master
 	else
 		return
 
@@ -91,7 +102,11 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
+<<<<<<< HEAD
 		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. It wasn't too hard, huh?.</font>")
+=======
+		to_chat(user, span_purple("The shackles are no longer restraining your body. It wasn't too hard, huh?"))
+>>>>>>> upstream/master
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/I, mob/user, params) //That part allows reinforcing this item with normal straightjacket
@@ -99,12 +114,17 @@
         var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/W = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
         remove_item_from_storage(user)
         user.put_in_hands(W)
+<<<<<<< HEAD
         to_chat(user, "<span class='notice'>You reinforced locks by using [src] on [I].</span>")
+=======
+        to_chat(user, span_notice("You reinforced the locks on [src] with [I]."))
+>>>>>>> upstream/master
         qdel(I)
         qdel(src)
         return
     . = ..()
 
+<<<<<<< HEAD
 //examine stuff
 
 /obj/item/clothing/suit/straight_jacket/shackles/examine(mob/user)
@@ -116,6 +136,12 @@
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced
 	name = "reinforced shackles"
 	desc = "Fancy shackles, but with suspiciously accurate locks..."
+=======
+//reinforced version.
+/obj/item/clothing/suit/straight_jacket/shackles/reinforced
+	name = "reinforced shackles"
+	desc = "Fancy shackles, but with a suspiciously sturdy lock..."
+>>>>>>> upstream/master
 	icon_state = "shackles"
 	inhand_icon_state = "shackles"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
@@ -137,7 +163,11 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
+<<<<<<< HEAD
 		to_chat(user, "<font color=purple>The shackles are restraining your body!</font>")
+=======
+		to_chat(user, span_purple("The shackles are restraining your body!"))
+>>>>>>> upstream/master
 	else
 		return
 
@@ -146,4 +176,8 @@
 	var/mob/living/carbon/human/C = user
 	. = ..()
 	if(src == C.wear_suit)
+<<<<<<< HEAD
 		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. You are free!</font>")
+=======
+		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))
+>>>>>>> upstream/master

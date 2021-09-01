@@ -5,7 +5,7 @@
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'icons/obj/guns/ballistic.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 	icon_state = "detective"
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
@@ -303,6 +303,9 @@
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
+	return fire_gun(target, user, flag, params)
+
+/obj/item/gun/proc/fire_gun(atom/target, mob/living/user, flag, params)
 	if(QDELETED(target))
 		return
 	if(firing_burst)

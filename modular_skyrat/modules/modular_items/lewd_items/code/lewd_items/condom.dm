@@ -6,7 +6,11 @@
 
 /obj/item/condom_pack
 	name = "condom pack"
+<<<<<<< HEAD
 	desc = "Don't worry, i have protection."
+=======
+	desc = "Don't worry, I have protection."
+>>>>>>> upstream/master
 	icon_state = "condom_pack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -28,7 +32,11 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/condom_pack/attack_self(mob/user)
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>You start to open the condom...</span>")
+=======
+	to_chat(user, span_notice("You start to open the condom pack..."))
+>>>>>>> upstream/master
 	if(!do_after(user, 15, target = user))
 		return
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
@@ -48,7 +56,11 @@
 
 /obj/item/clothing/sextoy/condom
 	name = "condom"
+<<<<<<< HEAD
 	desc = "I wonder if i can put this on head..."
+=======
+	desc = "I wonder if I can put this over my head..."
+>>>>>>> upstream/master
 	icon_state = "condom"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY

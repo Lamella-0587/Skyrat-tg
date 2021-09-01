@@ -2,7 +2,11 @@
 
 /obj/item/clothing/sextoy/nipple_clamps
 	name = "nipple clamps"
+<<<<<<< HEAD
 	desc = "Causing pain to nipples"
+=======
+	desc = "For causing nipple pain."
+>>>>>>> upstream/master
 	icon_state = "clamps"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY

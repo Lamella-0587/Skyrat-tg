@@ -1,6 +1,10 @@
 /obj/item/clothing/under/stripper_outfit
 	name = "stripper outfit"
+<<<<<<< HEAD
 	desc = "This clothing shows more, than hides"
+=======
+	desc = "An item of clothing that leaves little to the imagination."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
@@ -9,6 +13,7 @@
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	can_adjust = FALSE
+<<<<<<< HEAD
 	icon_state = "stripper"
 	inhand_icon_state = "stripper"
 	var/current_color = "cyan"
@@ -78,3 +83,22 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+	icon_state = "stripper_cyan"
+	inhand_icon_state = "stripper_cyan"
+	unique_reskin = list("Cyan" = "stripper_cyan",
+						"Yellow" = "stripper_yellow",
+						"Green" = "stripper_green",
+						"Red" = "stripper_red",
+						"Latex" = "stripper_latex",
+						"Orange" = "stripper_orange",
+						"White" = "stripper_white",
+						"Purple" = "stripper_purple",
+						"Black" = "stripper_black",
+						"Black-teal" = "stripper_tealblack")
+
+/obj/item/clothing/under/stripper_outfit/AltClick(mob/user)
+	. = ..()
+	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+		reskin_obj(user)
+>>>>>>> upstream/master

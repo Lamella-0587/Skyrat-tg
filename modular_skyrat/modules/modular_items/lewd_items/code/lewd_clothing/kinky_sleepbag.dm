@@ -1,6 +1,11 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag
+<<<<<<< HEAD
 	name = "latex sleepbag"
 	desc = "Tight sleepbag made of shiny material. It's dangerous to put it on yourself."
+=======
+	name = "latex sleeping bag"
+	desc = "A tight sleeping bag made of a shiny material. It's dangerous to put it on yourself."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_normal.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_digi.dmi'
@@ -60,7 +65,11 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user, obj/item/I)
 	var/mob/living/carbon/human/H = user
 	if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+<<<<<<< HEAD
 		to_chat(user, "Your hands are locked, you cannot do this.")
+=======
+		to_chat(user, span_warning("Your hands are stuck, you can't do this!"))
+>>>>>>> upstream/master
 		return FALSE
 	switch(color_changed)
 		if(FALSE)
@@ -78,11 +87,19 @@
 		if(TRUE)
 			if(bag_state == "deflated")
 				fold()
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>Sleepbag now is [bag_fold? "folded." : "unfolded."]</span>")
 				update_icon()
 				update_icon_state()
 			else
 				to_chat(user, "<span class='notice'>You can't fold the bag while it's infalted")
+=======
+				to_chat(user, span_notice("The sleeping bag now is [bag_fold? "folded." : "unfolded."]"))
+				update_icon()
+				update_icon_state()
+			else
+				to_chat(user, span_notice("You can't fold the bag while it's inflated!"))
+>>>>>>> upstream/master
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -120,11 +137,19 @@
 		time_to_sound_left = time_to_sound
 
 		if(bag_state == "inflated")
+<<<<<<< HEAD
 			to_chat(H,"<font color=purple>You realize that you can't move even an inch. Inflated sleepbag squeezes you from all sides.</font>")
 			H.cut_overlay(H.overlays_standing[HEAD_LAYER])
 			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
 		if(bag_state == "deflated")
 			to_chat(H,"<font color=purple>You realize that moving now is much harder. You are fully restrained, any struggling is useless.</font>")
+=======
+			to_chat(H, span_purple("You realize that you can't move even an inch. The inflated sleeping bag squeezes you from all sides!"))
+			H.cut_overlay(H.overlays_standing[HEAD_LAYER])
+			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
+		if(bag_state == "deflated")
+			to_chat(H, span_purple("You realize that moving now is much harder. You're fully restrained, any struggling is useless!"))
+>>>>>>> upstream/master
 	. = ..()
 
 //to inflate/deflate that thing
@@ -132,11 +157,19 @@
 	var/mob/living/carbon/human/H = user
 	if(bag_fold == FALSE)
 		toggle_mode()
+<<<<<<< HEAD
 		to_chat(H, "<span class='notice'>Sleepbag now is [bag_state? "inflated." : "deflated."]</span>")
 		update_icon()
 		update_icon_state()
 	else
 		to_chat(H, "<span class='notice'>You need to unfold the bag before inflating it.</span>")
+=======
+		to_chat(H, span_notice("The sleeping bag now is [bag_state? "inflated." : "deflated."]"))
+		update_icon()
+		update_icon_state()
+	else
+		to_chat(H, span_notice("You need to unfold the bag before inflating it!"))
+>>>>>>> upstream/master
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
@@ -169,7 +202,11 @@
 	if(ishuman(user))
 		if(src == H.wear_suit)
 			REMOVE_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
+<<<<<<< HEAD
 			to_chat(user,"<font color=purple>You are finally free! The tight bag is no longer constricting your movements.</font>")
+=======
+			to_chat(user, span_purple("You are finally free! The bag is no longer constricting your movements."))
+>>>>>>> upstream/master
 
 			H.add_overlay(H.overlays_standing[SHOES_LAYER])
 			H.update_inv_shoes()
@@ -202,6 +239,7 @@
 	. = ..()
 	owner.update_inv_hands()
 	stripper.update_inv_hands()
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -209,3 +247,5 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

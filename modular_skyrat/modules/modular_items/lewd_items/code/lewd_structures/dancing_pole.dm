@@ -2,7 +2,11 @@
 
 /obj/structure/pole
 	name = "stripper pole"
+<<<<<<< HEAD
 	desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
+=======
+	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole"
 	density = TRUE
@@ -63,7 +67,11 @@
 //to enable lights by aliclick
 /obj/structure/pole/AltClick(mob/user)
     pole_on = !pole_on
+<<<<<<< HEAD
     to_chat(user, "<span class='notice'>You turn the lights [pole_on? "on. Woah..." : "off."]</span>")
+=======
+    to_chat(user, span_notice("You turn the lights [pole_on? "on. Woah..." : "off."]"))
+>>>>>>> upstream/master
     playsound(user, pole_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
     update_icon_state()
     update_icon()
@@ -77,10 +85,13 @@
 	if(!length(pole_designs))
 		populate_pole_designs()
 
+<<<<<<< HEAD
 /obj/structure/pole/ComponentInitialize()
     . = ..()
     AddElement(/datum/element/update_icon_updates_onmob)
 
+=======
+>>>>>>> upstream/master
 /obj/structure/pole/update_icon_state()
     . = ..()
     icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"
@@ -95,7 +106,11 @@
 	if(.)
 		return
 	if(obj_flags & IN_USE)
+<<<<<<< HEAD
 		to_chat(user, "It's already in use - wait a bit.")
+=======
+		to_chat(user, "[src] is already in use!")
+>>>>>>> upstream/master
 		return
 	else
 		obj_flags |= IN_USE
@@ -103,7 +118,11 @@
 		user.setDir(SOUTH)
 		user.Stun(100)
 		user.forceMove(src.loc)
+<<<<<<< HEAD
 		user.visible_message(pick("<font color=purple>[user] dances on [src]!</font>","<font color=purple>[user] flexes their hip-moving skills on [src]!</font>"))
+=======
+		user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
+>>>>>>> upstream/master
 		animatepole(user)
 		user.layer = layer //set them to the poles layer
 		obj_flags &= ~IN_USE
@@ -153,7 +172,11 @@
 
 /obj/item/polepack
 	name = "pink stripper pole flatpack"
+<<<<<<< HEAD
 	desc = "A wrench is required to construct."
+=======
+	desc = "Construction requires a wrench."
+>>>>>>> upstream/master
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	throwforce = 0
 	icon_state = "pole_base"
@@ -164,9 +187,15 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and celing...</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, "<span class='notice'>You construct the stripper pole!</span>")
+=======
+			to_chat(user, span_notice("You begin fastening the frame to the floor and ceiling..."))
+			if(P.use_tool(src, user, 8 SECONDS, volume=50))
+				to_chat(user, span_notice("You assemble the stripper pole."))
+>>>>>>> upstream/master
 				var/obj/structure/pole/C = new
 				C.loc = loc
 				qdel(src)
@@ -177,18 +206,27 @@
 /obj/structure/pole/attackby(obj/item/P, mob/user, params) //un-erecting a pole. :(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You start to unfastening the frame...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
 			to_chat(user, "<span class='notice'>You take down the stripper pole!</span>")
+=======
+		to_chat(user, span_notice("You begin unfastening the frame from the floor and ceiling..."))
+		if(P.use_tool(src, user, 8 SECONDS, volume=50))
+			to_chat(user, span_notice("You disassemble the stripper pole."))
+>>>>>>> upstream/master
 			var/obj/item/polepack/C = new
 			C.loc = loc
 			qdel(src)
 		return
 	else
 		return ..()
+<<<<<<< HEAD
 
 //examine stuff
 
 /obj/structure/pole/examine(mob/user)
 	.=..()
 	. += "<span class='notice'>Click on \the [src.name] with multitool to customize it.</span>"
+=======
+>>>>>>> upstream/master

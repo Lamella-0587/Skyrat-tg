@@ -62,7 +62,11 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.glasses)
+<<<<<<< HEAD
 		to_chat(C, "<font color=purple>Blindfold is blocking your vision! You feel yourself so helpless...</font>")
+=======
+		to_chat(C, span_purple("The blindfold blocks your vision! You can't make out anything on the other side..."))
+>>>>>>> upstream/master
 	else
 		return
 
@@ -71,6 +75,7 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.glasses)
+<<<<<<< HEAD
 		to_chat(C, "<font color=purple>Blindfold no longer restricts your vision.</font>")
 
 //examine stuff
@@ -79,3 +84,6 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+		to_chat(C, span_purple("The blindfold no longer restricts your vision."))
+>>>>>>> upstream/master

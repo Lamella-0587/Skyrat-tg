@@ -17,6 +17,45 @@
 	/// Role check, if any needed
 	var/required_role = /datum/antagonist/cult
 
+/obj/item/soulstone/Initialize()
+	. = ..()
+	if(theme != THEME_HOLY)
+		RegisterSignal(src, COMSIG_BIBLE_SMACKED, .proc/on_bible_smacked)
+
+///signal called whenever a soulstone is smacked by a bible
+/obj/item/soulstone/proc/on_bible_smacked(datum/source, mob/living/user, direction)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/attempt_exorcism, user)
+
+/**
+ * attempt_exorcism: called from on_bible_smacked, takes time and if successful
+ * resets the item to a pre-possessed state
+ *
+ * Arguments:
+ * * exorcist: user who is attempting to remove the spirit
+ */
+/obj/item/soulstone/proc/attempt_exorcism(mob/exorcist)
+	if(IS_CULTIST(exorcist) || theme == THEME_HOLY)
+		return
+	balloon_alert(exorcist, span_notice("exorcising [src]..."))
+	playsound(src,'sound/hallucinations/veryfar_noise.ogg',40,TRUE)
+	if(!do_after(exorcist, 4 SECONDS, target = src))
+		return
+	playsound(src,'sound/effects/pray_chaplain.ogg',60,TRUE)
+	required_role = null
+	theme = THEME_HOLY
+	icon_state = "purified_soulstone"
+	for(var/mob/mob_cultist in contents)
+		if(mob_cultist.mind)
+			continue
+		icon_state = "purified_soulstone2"
+		mob_cultist.mind.remove_antag_datum(/datum/antagonist/cult)
+	for(var/mob/living/simple_animal/shade/sharded_shade in src)
+		sharded_shade.icon_state = "ghost1"
+		sharded_shade.name = "Purified [initial(sharded_shade.name)]"
+	exorcist.visible_message(span_notice("[exorcist] purifies [src]!"))
+	UnregisterSignal(src, COMSIG_BIBLE_SMACKED)
+
 /obj/item/soulstone/proc/role_check(mob/who)
 	return required_role ? (who.mind && who.mind.has_antag_datum(required_role, TRUE)) : TRUE
 
@@ -212,8 +251,11 @@
 				return FALSE
 			var/mob/living/carbon/T = target
 			if(T.client != null)
+				/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 				for(var/obj/item/W in T)
 					T.dropItemToGround(W)
+				*/
+				//SKYRAT EDIT REMOVAL END
 				init_shade(T, user)
 				return TRUE
 			else
@@ -234,8 +276,11 @@
 						to_chat(user, "[span_userdanger("Capture failed!")]: The soul has already fled its mortal frame. You attempt to bring it back...")
 						getCultGhost(T,user)
 					else
+						/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 						for(var/obj/item/W in T)
 							T.dropItemToGround(W)
+						*/
+						//SKYRAT EDIT REMOVAL END
 						init_shade(T, user, message_user = 1)
 						qdel(T)
 				else
@@ -324,6 +369,12 @@
 	var/theme = newstruct.theme
 	flick("make_[makeicon][theme]", newstruct)
 	playsound(newstruct, 'sound/effects/constructform.ogg', 50)
+	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
+	var/datum/component/return_on_death/RoD = target.GetComponent(/datum/component/return_on_death)
+	if(RoD)
+		var/sourcemob = RoD.sourcemob
+		newstruct.AddComponent(/datum/component/return_on_death, sourcemob)
+	//SKYRAT EDIT ADDITION END
 	if(stoner)
 		newstruct.faction |= "[REF(stoner)]"
 		newstruct.master = stoner
@@ -345,13 +396,26 @@
 
 
 /obj/item/soulstone/proc/init_shade(mob/living/carbon/human/dusted_victim, mob/user, message_user = FALSE, mob/shade_controller)
+	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
+	if(HAS_TRAIT_FROM(dusted_victim, TRAIT_SACRIFICED, "soulstoned"))
+		if(user)
+			to_chat(user, "This body has already been harvested!")
+		return
+	ADD_TRAIT(dusted_victim, TRAIT_SACRIFICED, "sacrificed")
+
 	if(!shade_controller)
 		shade_controller = dusted_victim
+	//SKYRAT EDIT ADDITION END
+
+	/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 	new /obj/effect/decal/remains/human(dusted_victim.loc) //Spawns a skeleton
 	dusted_victim.stop_sound_channel(CHANNEL_HEARTBEAT)
 	dusted_victim.invisibility = INVISIBILITY_ABSTRACT
 	dusted_victim.dust_animation()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	var/mob/living/simple_animal/shade/soulstone_spirit = new /mob/living/simple_animal/shade(src)
+	soulstone_spirit.AddComponent(/datum/component/return_on_death, dusted_victim) //SKYRAT EDIT ADDITION - SOULSTONE_CHANGES
 	soulstone_spirit.AddComponent(/datum/component/soulstoned, src)
 	soulstone_spirit.name = "Shade of [dusted_victim.real_name]"
 	soulstone_spirit.real_name = "Shade of [dusted_victim.real_name]"
@@ -399,8 +463,11 @@
 		return FALSE
 	if(contents.len) //If they used the soulstone on someone else in the meantime
 		return FALSE
+	/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 	for(var/obj/item/W in T)
 		T.dropItemToGround(W)
+	*/
+	//SKYRAT EDIT REMOVAL END
 	init_shade(T, user , shade_controller = chosen_ghost)
-	qdel(T)
+	//qdel(T) SKYRAT REMOVAL -- SOULSTONE_CHANGES
 	return TRUE

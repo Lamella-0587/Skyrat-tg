@@ -1,6 +1,10 @@
 /obj/item/clothing/ears/kinky_headphones
 	name = "kinky headphones"
+<<<<<<< HEAD
 	desc = "Protects your hearing from loud noises, looks like it have switch on right side..."
+=======
+	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
+>>>>>>> upstream/master
 	icon_state = "kinkphones"
 	inhand_icon_state = "kinkphones"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
@@ -60,10 +64,17 @@
 	if(ishuman(user) && slot == ITEM_SLOT_EARS)
 		if(kinky_headphones_on == FALSE)
 			ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
+<<<<<<< HEAD
 			to_chat(H,"<font color=purple>You can barely hear anything! Other sensations have escalated...</font>")
 		if(kinky_headphones_on == TRUE)
 			ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 			to_chat(H,"<font color=purple>Strange, but relaxing music fills your mind. You feel so... Calm.</font>")
+=======
+			to_chat(H, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
+		if(kinky_headphones_on == TRUE)
+			ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
+			to_chat(H, span_purple("Strange but relaxing music fills your mind. You feel so... Calm."))
+>>>>>>> upstream/master
 
 //we dropping item so we not deaf now. hurray.
 /obj/item/clothing/ears/kinky_headphones/dropped(mob/user)
@@ -71,7 +82,11 @@
 	var/mob/living/carbon/human/H = user
 	if(src == H.ears)
 		REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
+<<<<<<< HEAD
 		to_chat(H,"<font color=purple>Finally you can hear the world around again.</font>")
+=======
+		to_chat(H, span_purple("You can finally hear the world around you once more."))
+>>>>>>> upstream/master
 
 
 //to make it change model on click
@@ -91,7 +106,11 @@
 /obj/item/clothing/ears/kinky_headphones/proc/toggle(owner)
 	kinky_headphones_on = !kinky_headphones_on
 	update_icon()
+<<<<<<< HEAD
 	to_chat(owner, "<span class='notice'>You turn the music [kinky_headphones_on? "on. It plays relaxing music" : "off."]</span>")
+=======
+	to_chat(owner, span_notice("You turn the music [kinky_headphones_on? "on. It plays relaxing music." : "off."]"))
+>>>>>>> upstream/master
 
 /datum/action/item_action/toggle_kinky_headphones
 	name = "Toggle kinky headphones"
@@ -101,6 +120,7 @@
 	var/obj/item/clothing/ears/kinky_headphones/H = target
 	if(istype(H))
 		H.toggle(owner)
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -108,3 +128,5 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

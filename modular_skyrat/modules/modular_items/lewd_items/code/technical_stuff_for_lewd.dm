@@ -20,12 +20,17 @@
 //Looping sound for vibrating stuff//
 /////////////////////////////////////
 
+<<<<<<< HEAD
 /datum/looping_sound/vibrator_low
+=======
+/datum/looping_sound/vibrator
+>>>>>>> upstream/master
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	start_length = 1
 	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	mid_length = 1
 	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
+<<<<<<< HEAD
 	volume = 80
 	falloff_distance = 1
 	falloff_exponent = 5
@@ -51,6 +56,20 @@
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
+=======
+	falloff_distance = 1
+	falloff_exponent = 5
+	extra_range = SILENCED_SOUND_EXTRARANGE
+
+/datum/looping_sound/vibrator/low
+	volume = 80
+
+/datum/looping_sound/vibrator/medium
+	volume = 90
+
+/datum/looping_sound/vibrator/high
+	volume = 100
+>>>>>>> upstream/master
 
 ////////////////////////////////////////////////////////////////////////////////
 //Boxes for vending machine, to spawn stuff with important cheap tools in pack//
@@ -559,7 +578,11 @@
 			dna.features["body_model"] = ngender
 			if(!silent)
 				var/adj = ngender == MALE ? "masculine" : "feminine"
+<<<<<<< HEAD
 				visible_message("<span class='boldnotice'>[src] suddenly looks more [adj]!</span>", "<span class='boldwarning'>You suddenly feel more [adj]!</span>")
+=======
+				visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
+>>>>>>> upstream/master
 		else if(ngender == NEUTER)
 			dna.features["body_model"] = MALE
 	if(update_icon)

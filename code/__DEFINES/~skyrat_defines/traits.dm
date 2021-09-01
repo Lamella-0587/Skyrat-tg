@@ -31,3 +31,9 @@
 
 /// Under the effect of a numbling agent, such as morphine, for surgery.
 #define TRAIT_NUMBED "numbed"
+
+// felinid traits
+#define TRAIT_FELINE "feline_aspect"
+
+#define TRAIT_SACRIFICED "sacrificed" //Makes sure that people cant be cult sacrificed twice.
+

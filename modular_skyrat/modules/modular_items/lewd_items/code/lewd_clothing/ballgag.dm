@@ -28,7 +28,11 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
 
+<<<<<<< HEAD
 //here goes code for chocking ballgag
+=======
+//here goes code for choking ballgag
+>>>>>>> upstream/master
 
 /obj/item/clothing/mask/ballgag_phallic
 	w_class = WEIGHT_CLASS_SMALL
@@ -111,6 +115,7 @@
 	icon_state = icon_state = "[initial(icon_state)]_[current_ballgag_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_ballgag_color]"
 
+<<<<<<< HEAD
 //examine stuff
 
 /obj/item/clothing/mask/ballgag/examine(mob/user)
@@ -118,13 +123,19 @@
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
+=======
+>>>>>>> upstream/master
 /////////////////////////////////////////////////////////////////////
 /////////here goes code for choking version of ballgag///////////////
 /////////////////////////////////////////////////////////////////////
 
 /obj/item/clothing/mask/ballgag_phallic
 	name = "phallic ball gag"
+<<<<<<< HEAD
 	desc = "Prevents wearer from speaking and make breathing even harder"
+=======
+	desc = "Prevents the wearer from speaking, as well as make breathing even harder."
+>>>>>>> upstream/master
 	icon_state = "chokegag"
 	inhand_icon_state = "blindfold"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -134,7 +145,11 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	gas_transfer_coefficient = 0.9
 	moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...")
+<<<<<<< HEAD
 	moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!")
+=======
+	moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!")
+>>>>>>> upstream/master
 	moans_alt_probability = 5
 	time = 2
 	var/ballgag_size = "small"
@@ -210,6 +225,7 @@
 
 //start choking when equipping gag
 /obj/item/clothing/mask/ballgag_phallic/equipped(mob/user, slot)
+<<<<<<< HEAD
 	..()
 	var/mob/living/carbon/human/U = loc
 	if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
@@ -222,6 +238,20 @@
 /obj/item/clothing/mask/ballgag_phallic/Destroy()
 	..()
 	STOP_PROCESSING(SSobj, src)
+=======
+	var/mob/living/carbon/human/U = loc
+	if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
+		START_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/clothing/mask/ballgag_phallic/dropped(mob/user, slot)
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/clothing/mask/ballgag_phallic/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+>>>>>>> upstream/master
 
 /obj/item/clothing/mask/ballgag_phallic/process(delta_time)
 	var/mob/living/carbon/human/U = loc
@@ -242,6 +272,7 @@
 			if(prob(25))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -249,3 +280,5 @@
 	.=..()
 	if(was_reformed == FALSE && was_recolored == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

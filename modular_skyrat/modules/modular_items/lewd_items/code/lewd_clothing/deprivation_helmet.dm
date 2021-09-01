@@ -3,7 +3,11 @@
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
+<<<<<<< HEAD
 	desc = "Сompletely cuts the wearer from the outside world."
+=======
+	desc = "Сompletely cuts off the wearer from the outside world."
+>>>>>>> upstream/master
 	icon_state = "dephelmet"
 	inhand_icon_state = "dephelmet"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
@@ -53,7 +57,11 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
+<<<<<<< HEAD
 			to_chat(usr, "<span class ='notice'> You can't reach the deprivation helmet switch! </span>")
+=======
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
+>>>>>>> upstream/master
 		else
 			H.SwitchHelmet("vision")
 
@@ -63,7 +71,11 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
+<<<<<<< HEAD
 			to_chat(usr, "<span class ='notice'>You can't reach the deprivation helmet switch! </span>")
+=======
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
+>>>>>>> upstream/master
 		else
 			H.SwitchHelmet("hearing")
 
@@ -73,7 +85,11 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
+<<<<<<< HEAD
 			to_chat(usr, "<span class ='notice'>You can't reach the deprivation helmet switch! </span>")
+=======
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
+>>>>>>> upstream/master
 		else
 			H.SwitchHelmet("speech")
 
@@ -84,6 +100,7 @@
 		if(muzzle == TRUE)
 			muzzle = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+<<<<<<< HEAD
 			to_chat(usr,"<span class ='notice'>Speech switch off</span>")
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
@@ -95,10 +112,24 @@
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr,"<font color=purple>Something gagged your mouth! You can't make a single a sound...</font>")
+=======
+			to_chat(usr, span_notice("Speech switch off"))
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
+//				to_chat(U, span_purple("Your mouth is free. you breathe out with relief."))
+		else
+			muzzle = TRUE
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			to_chat(usr, span_notice("Speech switch on"))
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
+				to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
+>>>>>>> upstream/master
 	if(C == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+<<<<<<< HEAD
 			to_chat(usr,"<span class ='notice'>Hearing switch off</span>")
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -108,16 +139,32 @@
 			earmuffs = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
 			to_chat(usr,"<span class ='notice'>Hearing switch on</span>")
+=======
+			to_chat(usr, span_notice("Hearing switch off"))
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
+				Toggle_Sounds()
+//				to_chat(U, span_purple("Finally you can hear the world around again."))
+		else
+			earmuffs = TRUE
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			to_chat(usr, span_notice("Hearing switch on"))
+>>>>>>> upstream/master
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				Toggle_Sounds()
 				stop_client_sounds()
+<<<<<<< HEAD
 				to_chat(usr,"<font color=purple>You can barely hear anything! Other sensations have escalated...</font>")
+=======
+				to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
+>>>>>>> upstream/master
 	if(C == "vision")
 		var/mob/living/carbon/human/user = usr
 		if(prevent_vision == TRUE)
 			prevent_vision = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
+<<<<<<< HEAD
 			to_chat(usr,"<span class ='notice'>Vision switch off</span>")
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
@@ -129,6 +176,19 @@
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
 				to_chat(usr,"<font color=purple>The helmet is blocking your vision! You feel so helpless...</font>")
+=======
+			to_chat(usr, span_notice("Vision switch off"))
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				user.cure_blind("deprivation_helmet_[REF(src)]")
+//				to_chat(U, span_purple("Helmet no longer restricts your vision."))
+		else
+			prevent_vision = TRUE
+			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
+			to_chat(usr, span_notice("Vision switch on"))
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				user.become_blind("deprivation_helmet_[REF(src)]")
+				to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
+>>>>>>> upstream/master
 
 //Client sound switchers for more silense! And check current state of parameters
 //Switcher agregator function
@@ -282,11 +342,14 @@
 		"pinkn" = image(icon = src.icon, icon_state = "dephelmet_pinkn"),
 		"tealn" = image(icon = src.icon, icon_state = "dephelmet_tealn"))
 
+<<<<<<< HEAD
 //to update model
 /obj/item/clothing/head/helmet/space/deprivation_helmet/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+=======
+>>>>>>> upstream/master
 //to change model
 /obj/item/clothing/head/helmet/space/deprivation_helmet/AltClick(mob/user, obj/item/I)
 	if(color_changed == FALSE)
@@ -355,15 +418,26 @@
 	ship_ambience_sound_state = Toggle_Ship_Ambience_Get_Checked(C)
 	if(muzzle == TRUE)
 		ADD_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
+<<<<<<< HEAD
 		to_chat(usr,"<font color=purple>Something gagged your mouth! You can't make a single a sound...</font>")
+=======
+		to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
+>>>>>>> upstream/master
 	if(earmuffs == TRUE)
 		ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 		Toggle_Sounds()
 		stop_client_sounds()
+<<<<<<< HEAD
 		to_chat(usr,"<font color=purple>You can barely hear anything! Other sensations have escalated...</font>")
 	if(prevent_vision == TRUE)
 		user.become_blind("deprivation_helmet_[REF(src)]")
 		to_chat(usr,"<font color=purple>Helmet is blocking your vision! You feel yourself so helpless...</font>")
+=======
+		to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
+	if(prevent_vision == TRUE)
+		user.become_blind("deprivation_helmet_[REF(src)]")
+		to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
+>>>>>>> upstream/master
 
 
 //Here goes code that heals the wearer after unequipping helmet
@@ -382,11 +456,19 @@
 	//some stuff for unequip messages
 	if(src == user.head)
 		if(muzzle == TRUE)
+<<<<<<< HEAD
 			to_chat(user,"<font color=purple>Your mouth is free. You breathe out with relief.</font>")
 		if(earmuffs == TRUE)
 			to_chat(user,"<font color=purple>Finally you can hear the world around again.</font>")
 		if(prevent_vision == TRUE)
 			to_chat(user,"<font color=purple>Helmet no longer restricts your vision.</font>")
+=======
+			to_chat(user, span_purple("Your mouth is free. You breathe out with relief."))
+		if(earmuffs == TRUE)
+			to_chat(user, span_purple("Finally you can hear the world around you once more."))
+		if(prevent_vision == TRUE)
+			to_chat(user, span_purple("The helmet no longer restricts your vision."))
+>>>>>>> upstream/master
 
 	//Let's drop sound states
 	ambience_sound_state = null
@@ -395,6 +477,7 @@
 	midis_sound_state = null
 	announcement_sound_state = null
 	ship_ambience_sound_state = null
+<<<<<<< HEAD
 
 //examine stuff
 
@@ -402,3 +485,5 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+>>>>>>> upstream/master

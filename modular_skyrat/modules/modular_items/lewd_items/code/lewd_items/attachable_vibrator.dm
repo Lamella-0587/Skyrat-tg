@@ -4,7 +4,11 @@
 
 /obj/item/clothing/sextoy/eggvib
 	name = "vibrating egg"
+<<<<<<< HEAD
 	desc = "Simple sex toy."
+=======
+	desc = "A simple, vibrating sex toy."
+>>>>>>> upstream/master
 	icon_state = "eggvib"
 	inhand_icon_state = "eggvib"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -16,10 +20,17 @@
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/vibration_mode = "off"
+<<<<<<< HEAD
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
 	var/datum/looping_sound/vibrator_low/soundloop1
 	var/datum/looping_sound/vibrator_medium/soundloop2
 	var/datum/looping_sound/vibrator_hard/soundloop3
+=======
+	var/list/modes = list("low" = "medium", "medium" = "high", "high" = "off", "off" = "low")
+	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/vibrator/high/soundloop3
+>>>>>>> upstream/master
 	var/mode = "off"
 	var/static/list/eggvib_designs
 	w_class = WEIGHT_CLASS_TINY
@@ -78,6 +89,7 @@
 /obj/item/clothing/sextoy/eggvib/attack_self(mob/user, obj/item/I)
 	toggle_mode()
 	if(vibration_mode == "low")
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
 	if(vibration_mode == "medium")
 		to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
@@ -85,6 +97,15 @@
 		to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
 	if(vibration_mode == "off")
 		to_chat(user, "<span class='notice'>Vibrating egg turned off. Fun is over?</span>")
+=======
+		to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+	if(vibration_mode == "medium")
+		to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+	if(vibration_mode == "high")
+		to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing."))
+	if(vibration_mode == "off")
+		to_chat(user, span_notice("You turn off the vibrating egg. Fun time over."))
+>>>>>>> upstream/master
 	update_icon()
 	update_icon_state()
 
@@ -104,9 +125,15 @@
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop2.start()
+<<<<<<< HEAD
 		if("hard")
 			toy_on = TRUE
 			vibration_mode = "hard"
+=======
+		if("high")
+			toy_on = TRUE
+			vibration_mode = "high"
+>>>>>>> upstream/master
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 			soundloop3.start()
 		if("off")
@@ -129,6 +156,7 @@
 	if(toy_on == TRUE)
 		if(vibration_mode == "low")
 			U.adjustArousal(0.5 * delta_time)
+<<<<<<< HEAD
 			U.adjustPleasure(0.6 * delta_time)
 		if(vibration_mode == "medium")
 			U.adjustArousal(0.6 * delta_time)
@@ -143,13 +171,26 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+=======
+			U.adjustPleasure(0.5 * delta_time)
+		if(vibration_mode == "medium")
+			U.adjustArousal(0.6 * delta_time)
+			U.adjustPleasure(0.6 * delta_time)
+		if(vibration_mode == "high")
+			U.adjustArousal(0.7 * delta_time)
+			U.adjustPleasure(0.7 * delta_time)
+>>>>>>> upstream/master
 
 //////////////////////////
 ///Signal vibrating egg///
 //////////////////////////
 /obj/item/clothing/sextoy/signalvib
 	name = "signal vibrating egg"
+<<<<<<< HEAD
 	desc = "Sex toy with remote control capability. Use signaller to turn it on."
+=======
+	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
+>>>>>>> upstream/master
 	icon_state = "signalvib"
 	inhand_icon_state = "signalvib"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -161,11 +202,19 @@
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/vibration_mode = "low"
+<<<<<<< HEAD
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "low")
 	var/mode = "low"
 	var/datum/looping_sound/vibrator_low/soundloop1
 	var/datum/looping_sound/vibrator_medium/soundloop2
 	var/datum/looping_sound/vibrator_hard/soundloop3
+=======
+	var/list/modes = list("low" = "medium", "medium" = "high", "high" = "low")
+	var/mode = "low"
+	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/vibrator/high/soundloop3
+>>>>>>> upstream/master
 	var/static/list/signalvib_designs
 	w_class = WEIGHT_CLASS_TINY
 
@@ -193,7 +242,11 @@
 		A.icon = 'icons/obj/assemblies.dmi'
 
 		if(!user.transferItemToLoc(W, A))
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[W] is stuck to your hand, you cannot attach it to [src]!</span>")
+=======
+			to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
+>>>>>>> upstream/master
 			return
 		W.master = A
 		A.helmet_part = W
@@ -233,7 +286,11 @@
 			soundloop1.start()
 		if(vibration_mode == "medium")
 			soundloop2.start()
+<<<<<<< HEAD
 		if(vibration_mode == "hard")
+=======
+		if(vibration_mode == "high")
+>>>>>>> upstream/master
 			soundloop3.start()
 
 	if(toy_on == FALSE)
@@ -245,11 +302,19 @@
 	var/mob/living/carbon/human/U = loc
 	if(toy_on == TRUE)
 		if(src == U.penis || U.vagina || U.anus)
+<<<<<<< HEAD
 			to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
 		if(src == U.nipples)
 			to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
 	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
 		to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
+=======
+			to_chat(U, span_purple("You feel pleasant vibrations deep below..."))
+		if(src == U.nipples)
+			to_chat(U, span_purple("You feel pleasant stimulation in your nipples."))
+	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
+		to_chat(U, span_purple("The vibrating toy no longer drives you mad."))
+>>>>>>> upstream/master
 
 	if(master)
 		if(isassembly(master))
@@ -281,6 +346,7 @@
 			soundloop2.stop()
 			soundloop3.stop()
 			if(vibration_mode == "low")
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
 				soundloop1.start()
 			if(vibration_mode == "medium")
@@ -288,11 +354,24 @@
 				soundloop2.start()
 			if(vibration_mode == "hard")
 				to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
+=======
+				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
+				soundloop1.start()
+			if(vibration_mode == "medium")
+				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
+				soundloop2.start()
+			if(vibration_mode == "high")
+				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
+>>>>>>> upstream/master
 				soundloop3.start()
 			update_icon()
 			update_icon_state()
 		else
+<<<<<<< HEAD
 			to_chat(usr, "<span class ='notice'> You cannot switch modes while the vibrating egg is... Not vibrating!</span>")
+=======
+			to_chat(usr, span_notice("You can't switch modes while the vibrating egg is turned off!"))
+>>>>>>> upstream/master
 			return
 	else
 		return
@@ -361,7 +440,11 @@
 					soundloop1.start()
 				if(vibration_mode == "medium")
 					soundloop2.start()
+<<<<<<< HEAD
 				if(vibration_mode == "hard")
+=======
+				if(vibration_mode == "high")
+>>>>>>> upstream/master
 					soundloop3.start()
 
 			if(toy_on == FALSE)
@@ -403,8 +486,13 @@
 		if("medium")
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+<<<<<<< HEAD
 		if("hard")
 			vibration_mode = "hard"
+=======
+		if("high")
+			vibration_mode = "high"
+>>>>>>> upstream/master
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
 //Processing
@@ -427,6 +515,7 @@
 		if(vibration_mode == "medium")
 			U.adjustArousal(0.6 * delta_time)
 			U.adjustPleasure(0.6 * delta_time)
+<<<<<<< HEAD
 		if(vibration_mode == "hard")
 			U.adjustArousal(0.7 * delta_time)
 			U.adjustPleasure(0.7 * delta_time)
@@ -438,3 +527,8 @@
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
+=======
+		if(vibration_mode == "high")
+			U.adjustArousal(0.7 * delta_time)
+			U.adjustPleasure(0.7 * delta_time)
+>>>>>>> upstream/master
