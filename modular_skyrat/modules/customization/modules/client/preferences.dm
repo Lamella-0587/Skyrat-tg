@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/tmp/old_be_special = 0 //Bitflag version of be_special, used to update old savefiles and nothing more
 										//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
 										//autocorrected this round, not that you'd need to check that.
-	var/be_antag = TRUE //Does this player wish to be an antag this round?
+	var/be_antag = FALSE //Does this player wish to be an antag this round?
 
 	var/UI_style = null
 	var/buttons_locked = FALSE
@@ -1209,9 +1209,15 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 
 			//erp update prefs here
+<<<<<<< HEAD
 			dat += "<b>Be able to become bimboficated:</b> <a href='?_src_=prefs;preference=bimbo_pref'>[(skyrat_toggles & BIMBO_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Be affected by breast enlargement chemicals:</b> <a href='?_src_=prefs;preference=b_enlargement_pref'>[(skyrat_toggles & BREAST_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Be affected by penis enlargement chemicals:</b> <a href='?_src_=prefs;preference=p_enlargement_pref'>[(skyrat_toggles & PENIS_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+=======
+			dat += "<b>Bimbofication:</b> <a href='?_src_=prefs;preference=bimbo_pref'>[(skyrat_toggles & BIMBO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Breast enlargement chemicals:</b> <a href='?_src_=prefs;preference=b_enlargement_pref'>[(skyrat_toggles & BREAST_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Penis enlargement chemicals:</b> <a href='?_src_=prefs;preference=p_enlargement_pref'>[(skyrat_toggles & PENIS_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+>>>>>>> upstream/master
 			dat += "<b>Forced masculinity:</b> <a href='?_src_=prefs;preference=forced_m_pref'>[(skyrat_toggles & FORCED_MALE) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Forced femininity:</b> <a href='?_src_=prefs;preference=forced_fem_pref'>[(skyrat_toggles & FORCED_FEM) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
@@ -2154,42 +2160,42 @@ GLOBAL_LIST_INIT(food, list(
 				if("flavor_text")
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Flavor Text", features["flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))
-						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						features["flavor_text"] = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("silicon_flavor_text")
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
 					if(!isnull(msg))
-						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						features["silicon_flavor_text"] = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("ooc_prefs")
 					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
 					if(!isnull(msg))
-						ooc_prefs = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						ooc_prefs = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("general_record")
 					var/msg = input(usr, "Set your general record. This is more or less public information, available from security, medical and command consoles", "General Record", general_record) as message|null
 					if(!isnull(msg))
-						general_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						general_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("medical_record")
 					var/msg = input(usr, "Set your medical record. ", "Medical Record", medical_record) as message|null
 					if(!isnull(msg))
-						medical_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						medical_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("security_record")
 					var/msg = input(usr, "Set your security record. ", "Medical Record", security_record) as message|null
 					if(!isnull(msg))
-						security_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						security_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("background_info")
 					var/msg = input(usr, "Set your background information. (Where you come from, which culture were you raised in and why you are working here etc.)", "Background Info", background_info) as message|null
 					if(!isnull(msg))
-						background_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						background_info = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("exploitable_info")
 					var/msg = input(usr, "Set your exploitable information. This is sensitive informations that antagonists may get to see, recommended for better roleplay experience", "Exploitable Info", exploitable_info) as message|null
 					if(!isnull(msg))
-						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+						exploitable_info = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("uses_skintones")
 					needs_update = TRUE
@@ -3037,10 +3043,6 @@ GLOBAL_LIST_INIT(food, list(
 						save_character()
 					else
 						needs_update = TRUE
-
-					if(istype(parent.mob, /mob/dead/new_player)) //is this shitcode? probably - I DONT CAREEE~
-						var/mob/dead/new_player/NP = parent.mob
-						NP.show_titlescreen()
 
 				if("tab")
 					if (href_list["tab"])

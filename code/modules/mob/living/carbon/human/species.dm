@@ -505,7 +505,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!noggin) //Decapitated
 		return
 
-	if(HAS_TRAIT(H, TRAIT_HUSK))
+	if(HAS_TRAIT(H, TRAIT_HUSK) || HAS_TRAIT(H, TRAIT_INVISIBLE_MAN))
 		return
 	var/datum/sprite_accessory/S
 	var/list/standing = list()
@@ -681,7 +681,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /*
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
-
+	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
+		return handle_mutant_bodyparts(species_human)
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/noggin = species_human.get_bodypart(BODY_ZONE_HEAD)
@@ -826,7 +827,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	source.remove_overlay(BODY_ADJ_LAYER)
 	source.remove_overlay(BODY_FRONT_LAYER)
 
-	if(!mutant_bodyparts)
+	if(!mutant_bodyparts || HAS_TRAIT(source, TRAIT_INVISIBLE_MAN))
 		return
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
@@ -882,21 +883,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!source.dna.features["ears"] || source.dna.features["ears"] == "None" || source.head && (source.head.flags_inv & HIDEHAIR) || (source.wear_mask && (source.wear_mask.flags_inv & HIDEHAIR)) || !noggin || noggin.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "ears"
 
-	if(mutant_bodyparts["wings"])
-		if(!source.dna.features["wings"] || source.dna.features["wings"] == "None" || (source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT) && (!source.wear_suit.species_exception || !is_type_in_list(src, source.wear_suit.species_exception))))
-			bodyparts_to_add -= "wings"
-
-	if(mutant_bodyparts["wings_open"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT) && (!source.wear_suit.species_exception || !is_type_in_list(src, source.wear_suit.species_exception)))
-			bodyparts_to_add -= "wings_open"
-		else if (mutant_bodyparts["wings"])
-			bodyparts_to_add -= "wings_open"
-
-	if(mutant_bodyparts["moth_antennae"])
-		if(!source.dna.features["moth_antennae"] || source.dna.features["moth_antennae"] == "None" || !noggin)
-			bodyparts_to_add -= "moth_antennae"
-
-	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more agressive updating than most limbs.
+	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more aggressive updating than most limbs.
 	var/update_needed = FALSE
 	var/not_digitigrade = TRUE
 	for(var/obj/item/bodypart/bodypart as anything in source.bodyparts)
