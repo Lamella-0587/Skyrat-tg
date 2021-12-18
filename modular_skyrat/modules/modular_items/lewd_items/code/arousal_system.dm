@@ -617,7 +617,7 @@
 
 /datum/mood_event/ropebunny
 	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
-	mood_change = 5
+	mood_change = 0 //I don't want to doom the station to sonic-speed perverts, but still want to keep this as mood modifier.
 
 ///////////////////////
 ///AROUSAL INDICATOR///

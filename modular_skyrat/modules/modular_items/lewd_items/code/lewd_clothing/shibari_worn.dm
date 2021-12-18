@@ -19,7 +19,7 @@
 
 	///Current color
 	var/current_color = "pink"
-	///Tightness of the ropes can be low, medium and hard.
+	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure recieved while wearing this item
 	var/tightness = SHIBARI_TIGHTNESS_LOW
 	///Rope amount yielded from this apparel
 	var/rope_amount = 1
@@ -100,7 +100,7 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 
 /obj/item/clothing/under/shibari/torso
-	name = "Shibari ropes"
+	name = "shibari ropes"
 	desc = "Nice looking rope bondage."
 	icon_state = "shibari_body"
 
@@ -115,7 +115,7 @@
 			hooman.adjustOxyLoss(5)
 
 /obj/item/clothing/under/shibari/groin
-	name = "Crotch rope shibari"
+	name = "crotch rope shibari"
 	desc = "A rope that teases the wearer's genitals."
 	icon_state = "shibari_groin"
 
@@ -140,7 +140,7 @@
 		hooman.adjustPleasure(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/full
-	name = "Shibari fullbody ropes"
+	name = "shibari fullbody ropes"
 	desc = "Bondage ropes that covers whole body"
 	icon_state = "shibari_fullbody"
 	rope_amount = 2
@@ -161,7 +161,7 @@
 			hooman.adjustOxyLoss(5)
 
 /obj/item/clothing/gloves/shibari_hands
-	name = "Shibari arms bondage"
+	name = "shibari arms bondage"
 	desc = "Bondage ropes that cover arms."
 	icon_state = "shibari_arms"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
@@ -222,8 +222,8 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 
 /obj/item/clothing/shoes/shibari_legs
-	name = "Shibari arms bondage"
-	desc = "Bondage ropes that cover arms."
+	name = "shibari legs bondage"
+	desc = "Bondage ropes that cover legs."
 	icon_state = "shibari_legs"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes.dmi'
