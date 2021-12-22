@@ -300,6 +300,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	if(greyscale_config_worn_taur_snake)
+		worn_icon_taur_snake = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_snake, greyscale_colors)
+	if(greyscale_config_worn_taur_paw)
+		worn_icon_taur_paw = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_paw, greyscale_colors)
+	if(greyscale_config_worn_taur_hoof)
+		worn_icon_taur_hoof = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_hoof, greyscale_colors)
 	// SKYRAT EDIT ADD END
 	if(greyscale_config_inhand_left)
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
@@ -1286,7 +1292,7 @@ attack_basic_mob
 
 	var/list/items = list()
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON], icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1296,9 +1302,12 @@ attack_basic_mob
 	if(!unique_reskin[pick])
 		return
 	current_skin = pick
-	icon = unique_reskin[pick][RESKIN_ICON]
-	icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
-	worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON])
+		icon = unique_reskin[pick][RESKIN_ICON]
+	if(unique_reskin[pick][RESKIN_ICON_STATE])
+		icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+	if(unique_reskin[pick][RESKIN_WORN_ICON])
+		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 	if(unique_reskin[pick][RESKIN_MUTANT_VARIANTS])
