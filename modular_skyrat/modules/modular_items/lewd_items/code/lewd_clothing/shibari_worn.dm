@@ -17,8 +17,6 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	item_flags = DROPDEL
 
-	///Current color
-	var/current_color = "pink"
 	///Tightness of the ropes can be low, medium and hard. This var works as multiplier for arousal and pleasure recieved while wearing this item
 	var/tightness = SHIBARI_TIGHTNESS_LOW
 	///Rope amount yielded from this apparel
@@ -27,27 +25,14 @@
 /obj/item/clothing/under/shibari/Destroy(force)
 	if(!force)
 		var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
-		ropes.current_color = current_color
-		ropes.amount = rope_amount
-		ropes.update_icon_state()
-		ropes.update_icon()
 	var/mob/living/carbon/human/hooman = loc
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	. = ..()
 
-/obj/item/clothing/under/shibari/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
-
 /obj/item/clothing/under/shibari/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/under/shibari/Initialize()
-	. = ..()
-	update_appearance()
 
 /obj/item/clothing/under/shibari/attack_hand(mob/user)
 	. = ..()
@@ -104,6 +89,14 @@
 	desc = "Nice looking rope bondage."
 	icon_state = "shibari_body"
 
+	greyscale_config = /datum/greyscale_config/shibari_clothes/body
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/body
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/body
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/body
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/body
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/body
+	greyscale_colors = "#AD66BE"
+
 //processing stuff
 /obj/item/clothing/under/shibari/torso/process(delta_time)
 	. = ..()
@@ -118,6 +111,14 @@
 	name = "crotch rope shibari"
 	desc = "A rope that teases the wearer's genitals."
 	icon_state = "shibari_groin"
+
+	greyscale_config = /datum/greyscale_config/shibari_clothes/groin
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/groin
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/groin
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/groin
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/groin
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/groin
+	greyscale_colors = "#AD66BE"
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/groin/equipped(mob/user, slot)
@@ -145,6 +146,14 @@
 	icon_state = "shibari_fullbody"
 	rope_amount = 2
 
+	greyscale_config = /datum/greyscale_config/shibari_clothes/fullbody
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/fullbody
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/fullbody
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/fullbody
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/fullbody
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
+	greyscale_colors = "#AD66BE"
+
 //processing stuff
 /obj/item/clothing/under/shibari/full/process(delta_time)
 	. = ..()
@@ -170,29 +179,18 @@
 	strip_delay = 100
 	breakouttime = 100
 	item_flags = DROPDEL
-	///Current color
-	var/current_color = "pink"
+
+	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
+	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
-	ropes.current_color = current_color
-	ropes.update_icon_state()
-	ropes.update_icon()
 	. = ..()
-
-//customization stuff
-/obj/item/clothing/gloves/shibari_hands/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/gloves/shibari_hands/Initialize()
-	. = ..()
-	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
@@ -233,29 +231,19 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	slowdown = 4
 	item_flags = DROPDEL
-	///Current color
-	var/current_color = "pink"
+
+	greyscale_config = /datum/greyscale_config/shibari_clothes/legs
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
+	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
-	ropes.current_color = current_color
-	ropes.update_icon_state()
-	ropes.update_icon()
 	. = ..()
-
-//customization stuff
-/obj/item/clothing/shoes/shibari_legs/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/shoes/shibari_legs/Initialize()
-	. = ..()
-	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)

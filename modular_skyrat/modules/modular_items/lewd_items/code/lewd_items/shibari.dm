@@ -12,12 +12,9 @@
 	merge_type = /obj/item/stack/shibari_rope
 	singular_name = "ropes"
 
-	///color
-	var/current_color = "pink"
-	///if the thing's color has been changed or not
-	var/color_changed = FALSE
-	///cache for radial menu
-	var/static/list/ropes_designs
+	greyscale_config = /datum/greyscale_config/shibari_rope
+	greyscale_colors = "#AD66BE"
+
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
 
@@ -28,79 +25,9 @@
 	var/obj/item/clothing/shoes/shibari_legs/shibari_legs
 	var/obj/item/clothing/gloves/shibari_hands/shibari_hands
 
-//create radial menu
-/obj/item/stack/shibari_rope/proc/populate_ropes_designs()
-	ropes_designs = list(
-		"pink" = image (icon = src.icon, icon_state = "shibari_rope_pink"),
-		"teal" = image(icon = src.icon, icon_state = "shibari_rope_teal"),
-		"red" = image (icon = src.icon, icon_state = "shibari_rope_red"),
-		"brown" = image (icon = src.icon, icon_state = "shibari_rope_brown"),
-		"black" = image (icon = src.icon, icon_state = "shibari_rope_black"),
-		"white" = image (icon = src.icon, icon_state = "shibari_rope_white"))
-
 /obj/item/stack/shibari_rope/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-//to change model
-/obj/item/stack/shibari_rope/AltClick(mob/user, obj/item/thing)
-	if(!color_changed)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(user,src, ropes_designs, custom_check = CALLBACK(src, .proc/check_menu, user, thing), radius = 36, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		current_color = choice
-		update_icon()
-		color_changed = TRUE
-	else
-		return
-
-//to check if we can change ropes' model
-/obj/item/stack/shibari_rope/proc/check_menu(mob/living/user)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	return TRUE
-
-/obj/item/stack/shibari_rope/Initialize()
-	. = ..()
-	update_icon_state()
-	update_icon()
-	if(!length(ropes_designs))
-		populate_ropes_designs()
-
-/obj/item/stack/shibari_rope/full/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
-	. = ..()
-	//random color variation on start. Because why not?
-	current_color = pick(ropes_designs)
-	update_icon_state()
-	update_icon()
-
-/obj/item/stack/shibari_rope/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
-
-//examine stuff
-
-/obj/item/stack/shibari_rope/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += span_notice("Alt-Click \the [src.name] to customize it.</span>")
-
-//mechanics stuff
-/obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
-	if(!istype(check, merge_type))
-		return FALSE
-	//different color stacks cannot merge
-	if(istype(check, merge_type))
-		var/obj/item/stack/shibari_rope/other_stuff = check
-		if(other_stuff.current_color != current_color)
-			return FALSE
-	return TRUE
 
 /obj/item/stack/shibari_rope/attack(mob/living/carbon/attacked, mob/living/user)
 	add_fingerprint(user)
@@ -122,9 +49,6 @@
 							shibari_legs = new(src)
 							if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,0,0,1))
 								use(1)
-								shibari_legs.current_color = current_color
-								shibari_legs.update_icon_state()
-								shibari_legs.update_icon()
 								shibari_legs = null
 								them.visible_message(span_warning("[user] tied [them]'s feet!"),\
 									span_userdanger("[user] tied your feet!"),\
@@ -141,10 +65,7 @@
 							shibari_groin = new(src)
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
-								shibari_groin.current_color = current_color
 								shibari_groin.tightness = tightness
-								shibari_groin.update_icon_state()
-								shibari_groin.update_icon()
 								shibari_groin = null
 								them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 									span_userdanger("[user] tied your groin!"),\
@@ -160,10 +81,7 @@
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
-								shibari_fullbody.current_color = current_color
 								shibari_fullbody.tightness = tightness
-								shibari_fullbody.update_icon_state()
-								shibari_fullbody.update_icon()
 								shibari_fullbody = null
 								them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 									span_userdanger("[user] tied your groin!"),\
@@ -180,10 +98,7 @@
 							shibari_body = new(src)
 							if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
-								shibari_body.current_color = current_color
 								shibari_body.tightness = tightness
-								shibari_body.update_icon_state()
-								shibari_body.update_icon()
 								shibari_body = null
 								them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 									span_userdanger("[user] tied your chest!"),\
@@ -199,10 +114,7 @@
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
-								shibari_fullbody.current_color = current_color
 								shibari_fullbody.tightness = tightness
-								shibari_fullbody.update_icon_state()
-								shibari_fullbody.update_icon()
 								shibari_fullbody = null
 								them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 									span_userdanger("[user] tied your chest!"),\
@@ -219,9 +131,6 @@
 							shibari_hands = new(src)
 							if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,0,0,1))
 								use(1)
-								shibari_hands.current_color = current_color
-								shibari_hands.update_icon_state()
-								shibari_hands.update_icon()
 								shibari_hands = null
 								them.visible_message(span_warning("[user] tied [them]'s hands!"),\
 									span_userdanger("[user] tied your hands!"),\
