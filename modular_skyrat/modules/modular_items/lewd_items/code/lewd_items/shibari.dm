@@ -1,7 +1,12 @@
+//Defining rope tightness for code readability. This var works as multiplier for arousal and pleasure per tick when character tied up with those.
+#define ROPE_TIGHTNESS_LOW (1<<0)
+#define ROPE_TIGHTNESS_MED (1<<1)
+#define ROPE_TIGHTNESS_HIGH (1<<2)
+
 /obj/item/stack/shibari_rope
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "shibari_rope"
-	name = "Shibari ropes"
+	name = "shibari ropes"
 	desc = "Coil of bondage ropes."
 	amount = 1
 	merge_type = /obj/item/stack/shibari_rope
@@ -13,6 +18,8 @@
 	var/color_changed = FALSE
 	///cache for radial menu
 	var/static/list/ropes_designs
+	///We use this var to change tightness var on worn version of this item.
+	var/tightness = ROPE_TIGHTNESS_LOW
 
 	///Things this rope can transform into when it's tied to a person
 	var/obj/item/clothing/under/shibari/torso/shibari_body
@@ -135,6 +142,7 @@
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_groin.current_color = current_color
+								shibari_groin.tightness = tightness
 								shibari_groin.update_icon_state()
 								shibari_groin.update_icon()
 								shibari_groin = null
@@ -153,6 +161,7 @@
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_fullbody.current_color = current_color
+								shibari_fullbody.tightness = tightness
 								shibari_fullbody.update_icon_state()
 								shibari_fullbody.update_icon()
 								shibari_fullbody = null
@@ -172,6 +181,7 @@
 							if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_body.current_color = current_color
+								shibari_body.tightness = tightness
 								shibari_body.update_icon_state()
 								shibari_body.update_icon()
 								shibari_body = null
@@ -190,6 +200,7 @@
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_fullbody.current_color = current_color
+								shibari_fullbody.tightness = tightness
 								shibari_fullbody.update_icon_state()
 								shibari_fullbody.update_icon()
 								shibari_fullbody = null
@@ -225,6 +236,27 @@
 	else
 		return ..()
 
+///This part of code required for tightness adjustment. You can change tightness of future shibari bondage on character by clicking on ropes.
+
+/obj/item/stack/shibari_rope/attack_self(mob/user, obj/item/I)
+	switch(tightness)
+		if(ROPE_TIGHTNESS_HIGH)
+			tightness = ROPE_TIGHTNESS_LOW
+			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 25)
+			to_chat(user, span_notice("You slightly tightened the ropes"))
+		if(ROPE_TIGHTNESS_LOW)
+			tightness = ROPE_TIGHTNESS_MED
+			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 50)
+			to_chat(user, span_notice("You moderately tightened the ropes"))
+		if(ROPE_TIGHTNESS_MED)
+			tightness = ROPE_TIGHTNESS_HIGH
+			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 75)
+			to_chat(user, span_notice("You strongly tightened the ropes"))
+
+//This part of code spawns ropes with full stack.
 /obj/item/stack/shibari_rope/full
 	amount = 10
 
+#undef ROPE_TIGHTNESS_LOW
+#undef ROPE_TIGHTNESS_MED
+#undef ROPE_TIGHTNESS_HIGH
