@@ -31,6 +31,8 @@
 
 /obj/item/stack/shibari_rope/attack(mob/living/carbon/attacked, mob/living/user)
 	add_fingerprint(user)
+	if(get_dist(user, src) > 1)
+		return ..()
 	if(ishuman(attacked))
 		if(attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			var/mob/living/carbon/human/them = attacked
