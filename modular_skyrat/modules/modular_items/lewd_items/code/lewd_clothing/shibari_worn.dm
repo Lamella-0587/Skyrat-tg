@@ -24,7 +24,7 @@
 
 /obj/item/clothing/under/shibari/Destroy(force)
 	if(!force)
-		var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
+		new/obj/item/stack/shibari_rope(get_turf(src))
 	var/mob/living/carbon/human/hooman = loc
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
@@ -185,7 +185,7 @@
 	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
-	var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
+	new/obj/item/stack/shibari_rope(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
@@ -238,7 +238,7 @@
 	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
-	var/obj/item/stack/shibari_rope/ropes = new(get_turf(src))
+	new/obj/item/stack/shibari_rope(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
