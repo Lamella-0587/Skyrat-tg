@@ -3727,7 +3727,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -9223,7 +9223,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/escape)
 "aNa" = (
@@ -37179,7 +37179,7 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/supply)
@@ -40268,7 +40268,7 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
 "hgD" = (
-/obj/machinery/suit_storage_unit/security_peacekeeper,
+/obj/machinery/suit_storage_unit/security,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "hgK" = (
@@ -41589,7 +41589,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -41661,13 +41661,6 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/security/prison)
-"iud" = (
-/obj/effect/landmark/start/security_sergeant,
-/obj/effect/turf_decal/trimline/darkblue/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "iuR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -43852,10 +43845,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
-"ktd" = (
-/obj/effect/landmark/start/security_sergeant,
-/turf/open/floor/iron/dark,
-/area/security/office)
 "ktt" = (
 /obj/item/reagent_containers/glass/bottle/nutrient/empty{
 	pixel_x = 10;
@@ -46797,7 +46786,7 @@
 /area/command/heads_quarters/rd)
 "ngw" = (
 /obj/effect/turf_decal/bot_blue,
-/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
+/obj/machinery/vending/wardrobe/sec_wardrobe/peacekeeper,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "ngF" = (
@@ -91083,7 +91072,7 @@ ado
 nZo
 mMA
 vlV
-iud
+cMX
 poL
 poL
 pWp
@@ -91340,7 +91329,7 @@ adn
 nIb
 bpJ
 wPx
-ktd
+iVu
 yaQ
 eZH
 loM
@@ -92111,7 +92100,7 @@ acn
 adh
 adm
 joM
-ktd
+iVu
 hET
 pBI
 xPq

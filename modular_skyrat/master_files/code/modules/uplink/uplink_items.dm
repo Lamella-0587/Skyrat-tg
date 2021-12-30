@@ -274,6 +274,7 @@
 			Ammunition not included."
 	cost = 1
 	item = /obj/item/ammo_box/magazine/m12g/empty
+	purchasable_from = ALL
 
 //SUITS
 
@@ -290,7 +291,7 @@
 	cost = 1
 
 //HELMETS
-/datum/uplink_item/suits/hardsuit/swathelmet_traitor
+/datum/uplink_item/suits/swathelmet_traitor
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
@@ -366,12 +367,6 @@
 	name = "Dark Lord bundle"
 	desc = "Wield unlimited power with this extremely effective combative kit, guaranteed to give the user efficient staying potential in any confrontation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
-	cost = 20
-
-/datum/uplink_item/loadout_skyrat/hunter
-	name = "Whaler bundle"
-	desc = "There’s no whales in space, but there sure are carp. Blend in with your prey and wield an impossibly effective high-power harpoon gun in this tribute to a tale told long ago."
-	item = /obj/item/storage/box/syndie_kit/loadout/hunter
 	cost = 20
 
 /datum/uplink_item/loadout_skyrat/bee
