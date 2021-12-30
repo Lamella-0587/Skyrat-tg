@@ -57,6 +57,8 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_legs)
+					else
+						to_chat(user, span_warning("They're already wearing something on this slot!"))
 
 				if(BODY_ZONE_PRECISE_GROIN)
 					if(!(them.w_uniform))
@@ -90,6 +92,8 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_fullbody)
+					else
+						to_chat(user, span_warning("They're already wearing something on this slot!"))
 
 				if(BODY_ZONE_CHEST)
 					if(!(them.w_uniform))
@@ -123,6 +127,8 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_fullbody)
+					else
+						to_chat(user, span_warning("They're already wearing something on this slot!"))
 
 				if(BODY_ZONE_L_ARM || BODY_ZONE_R_ARM)
 					if(!(them.gloves))
@@ -139,6 +145,8 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_hands)
+					else
+						to_chat(user, span_warning("They're already wearing something on this slot!"))
 				else
 					return ..()
 		else
