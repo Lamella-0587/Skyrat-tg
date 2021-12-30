@@ -60,6 +60,8 @@
 	unbuckle_all_mobs(TRUE)
 
 /obj/structure/chair/shibari_stand/attack_hand(mob/living/user)
+	if(get_dist(user, src) > 1)
+		return ..()
 	var/mob/living/attacked_mob = locate() in src.loc
 	if(!has_buckled_mobs())
 		if(attacked_mob?.can_buckle_to)
