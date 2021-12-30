@@ -106,7 +106,7 @@
 //Paper instructions for shibari kit
 
 /obj/item/paper/shibari_kit_instructions
-	info = "Hello! Congratulations on your purchase of shibari kit by LustWish! Some newbies may get confused by that gear, so we prepared a small instructions for you! First of all - you can use screwdriver to change color of your shibari stand. Just replace one plastic fittings to another! Second - if you want to tie somebody to bondage stand you need to apply full body bondage on them. To do that you need to use rope on body and then on groin of character, then you can just drag them to stand. Don't forget to hold ropes in your hands while doing this! You can't tie them to stand without ropes. And that's it!"
+	info = "Hello! Congratulations on your purchase of the shibari kit by LustWish! Some newbies may get confused by our ropes, so we prepared a small instructions for you! First of all - you can use screwdrivers to change the color of your shibari stand. Just replace the plastic fittings! Second - if you want to tie somebody to a bondage stand you need to fully tie their body, on both groin and chest!. To do that you need to use rope on body and then on groin of character, then you can just buckle them to the stand like any chair. Don't forget to have some ropes on your hand to actually tie them to the stand, as there's no ropes included with it! And that's it!"
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
 //If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//
