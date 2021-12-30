@@ -47,7 +47,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 							span_userdanger("[user] starts tying your feet!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_legs = new(src)
 							if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,0,0,1))
 								use(1)
@@ -65,7 +65,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 							span_userdanger("[user] starts tying your groin!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_groin = new(src)
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
@@ -80,7 +80,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 							span_userdanger("[user] starts tying your groin!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_fullbody = new(src)
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
@@ -100,7 +100,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 							span_userdanger("[user] starts tying your chest!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_body = new(src)
 							if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
@@ -115,7 +115,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 							span_userdanger("[user] starts tying your chest!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_fullbody = new(src)
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
@@ -135,7 +135,7 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
 							span_userdanger("[user] starts tying your hands!"),\
 							span_hear("You hear ropes being tightened."))
-						if(do_after(user, 60))
+						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_hands = new(src)
 							if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,0,0,1))
 								use(1)
