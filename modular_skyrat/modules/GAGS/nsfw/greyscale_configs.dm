@@ -38,18 +38,18 @@
 
 //shibari
 
-/datum/greyscale_config/shibari
+/datum/greyscale_config/shibari_rope
 	name = "Shibari Rope"
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari.json'
 
 /datum/greyscale_config/shibari_clothes
 	name = "Shibari Clothes"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 
 /datum/greyscale_config/shibari_worn
 	name = "Shibari"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform.dmi'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 
 /datum/greyscale_config/shibari_worn_digi
 	name = "Shibari Digi"
