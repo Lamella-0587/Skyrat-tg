@@ -2,7 +2,7 @@
 	"shibari_rope": [
 		{
 			"type": "icon_state",
-			"icon_state": "shibari_greyscale_low",
+			"icon_state": "shibari_greyscale_max",
 			"blend_mode": "overlay",
 			"color_ids": [ 1 ]
 		}

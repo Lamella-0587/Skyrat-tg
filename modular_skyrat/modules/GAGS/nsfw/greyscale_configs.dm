@@ -43,6 +43,12 @@
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari.json'
 
+/datum/greyscale_config/shibari_rope/med
+	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari_med.json'
+
+/datum/greyscale_config/shibari_rope/high
+	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari_high.json'
+
 /datum/greyscale_config/shibari_clothes
 	name = "Shibari Clothes"
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'

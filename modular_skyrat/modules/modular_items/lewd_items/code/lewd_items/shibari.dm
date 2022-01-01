@@ -10,10 +10,10 @@
 	desc = "Coil of bondage ropes."
 	amount = 1
 	merge_type = /obj/item/stack/shibari_rope
-	singular_name = "ropes"
+	singular_name = "rope"
+	max_amount = 5
 
 	greyscale_config = /datum/greyscale_config/shibari_rope
-	greyscale_colors = "#AD66BE"
 
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
@@ -24,6 +24,37 @@
 	var/obj/item/clothing/under/shibari/full/shibari_fullbody
 	var/obj/item/clothing/shoes/shibari_legs/shibari_legs
 	var/obj/item/clothing/gloves/shibari_hands/shibari_hands
+
+/obj/item/stack/shibari_rope/update_icon_state()
+	if(amount <= (max_amount * (1/3)))
+		set_greyscale(greyscale_colors, /datum/greyscale_config/shibari_rope)
+		return ..()
+	if (amount <= (max_amount * (2/3)))
+		set_greyscale(greyscale_colors, /datum/greyscale_config/shibari_rope/med)
+		return ..()
+	set_greyscale(greyscale_colors, /datum/greyscale_config/shibari_rope/high)
+	return ..()
+
+/obj/item/stack/shibari_rope/split_stack(mob/user, amount)
+	. = ..()
+	if(.)
+		var/obj/item/stack/F = .
+		F.greyscale_colors = greyscale_colors
+		F.update_greyscale()
+
+/obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
+	if(check.greyscale_colors != greyscale_colors)
+		return FALSE
+	else
+		return ..()
+
+/obj/item/stack/shibari_rope/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
+	. = ..()
+	if(!greyscale_colors)
+		var/new_color = "#"
+		for(var/i in 1 to 3)
+			new_color += num2hex(rand(0, 255), 2)
+		set_greyscale(colors = list(new_color))
 
 /obj/item/stack/shibari_rope/ComponentInitialize()
 	. = ..()
@@ -174,7 +205,7 @@
 
 //This part of code spawns ropes with full stack.
 /obj/item/stack/shibari_rope/full
-	amount = 10
+	amount = 5
 
 #undef ROPE_TIGHTNESS_LOW
 #undef ROPE_TIGHTNESS_MED
