@@ -43,10 +43,10 @@
 		F.update_greyscale()
 
 /obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
-	if(check.greyscale_colors != greyscale_colors)
-		return FALSE
-	else
+	if(check.greyscale_colors == greyscale_colors)
 		return ..()
+	else
+		return FALSE
 
 /obj/item/stack/shibari_rope/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
 	. = ..()
