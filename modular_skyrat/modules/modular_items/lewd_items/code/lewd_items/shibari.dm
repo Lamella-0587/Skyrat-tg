@@ -15,6 +15,8 @@
 
 	greyscale_config = /datum/greyscale_config/shibari_rope
 
+	var/color_changed = FALSE
+
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
 
@@ -40,6 +42,7 @@
 	if(.)
 		var/obj/item/stack/F = .
 		F.greyscale_colors = greyscale_colors
+		F.color_changed = color_changed
 		F.update_greyscale()
 
 /obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
