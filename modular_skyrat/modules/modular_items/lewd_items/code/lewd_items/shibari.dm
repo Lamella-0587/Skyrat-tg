@@ -82,6 +82,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_legs = new(src)
+							shibari_legs.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,0,0,1))
 								use(1)
 								shibari_legs = null
@@ -100,6 +101,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_groin = new(src)
+							shibari_groin.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_groin.tightness = tightness
@@ -115,6 +117,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_fullbody = new(src)
+							shibari_fullbody.set_greyscale(greyscale_colors)
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
@@ -135,6 +138,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_body = new(src)
+							shibari_body.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_body.tightness = tightness
@@ -150,6 +154,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_fullbody = new(src)
+							shibari_fullbody.set_greyscale(greyscale_colors)
 							qdel(them.w_uniform, force = TRUE)
 							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
@@ -170,6 +175,7 @@
 							span_hear("You hear ropes being tightened."))
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							shibari_hands = new(src)
+							shibari_hands.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,0,0,1))
 								use(1)
 								shibari_hands = null

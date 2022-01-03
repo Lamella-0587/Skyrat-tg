@@ -11,6 +11,8 @@
 	worn_icon_taur_snake = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi'
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-paw.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
+	strip_delay = 100
+	breakouttime = 100
 	can_adjust = FALSE
 	body_parts_covered = NONE
 	strip_delay = 100
@@ -24,7 +26,9 @@
 
 /obj/item/clothing/under/shibari/Destroy(force)
 	if(!force)
-		new/obj/item/stack/shibari_rope(get_turf(src))
+		var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
+		rope.amount = rope_amount
+		rope.set_greyscale(greyscale_colors)
 	var/mob/living/carbon/human/hooman = loc
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
@@ -95,7 +99,6 @@
 	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/body
 	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/body
 	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/body
-	greyscale_colors = "#AD66BE"
 
 //processing stuff
 /obj/item/clothing/under/shibari/torso/process(delta_time)
@@ -118,7 +121,6 @@
 	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/groin
 	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/groin
 	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/groin
-	greyscale_colors = "#AD66BE"
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/groin/equipped(mob/user, slot)
@@ -152,7 +154,6 @@
 	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/fullbody
 	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/fullbody
 	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
-	greyscale_colors = "#AD66BE"
 
 //processing stuff
 /obj/item/clothing/under/shibari/full/process(delta_time)
@@ -182,10 +183,10 @@
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
-	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
-	new/obj/item/stack/shibari_rope(get_turf(src))
+	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
+	rope.set_greyscale(greyscale_colors)
 	. = ..()
 
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
@@ -238,7 +239,8 @@
 	greyscale_colors = "#AD66BE"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
-	new/obj/item/stack/shibari_rope(get_turf(src))
+	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
+	rope.set_greyscale(greyscale_colors)
 	. = ..()
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
