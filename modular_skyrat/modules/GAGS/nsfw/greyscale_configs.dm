@@ -73,7 +73,7 @@
 
 /datum/greyscale_config/shibari_clothes
 	name = "Shibari Clothes"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn
