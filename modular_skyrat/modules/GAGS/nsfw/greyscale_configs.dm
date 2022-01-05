@@ -73,7 +73,7 @@
 
 /datum/greyscale_config/shibari_clothes
 	name = "Shibari Clothes"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn
@@ -81,7 +81,7 @@
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
 
-/*/datum/greyscale_config/shibari_worn_digi
+/datum/greyscale_config/shibari_worn_digi
 	name = "Shibari Digi"
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
@@ -100,7 +100,7 @@
 	name = "Shibari Taur Hoof"
 	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
-*/
+
 //body
 
 /datum/greyscale_config/shibari_clothes/body
@@ -110,7 +110,7 @@
 /datum/greyscale_config/shibari_worn/body
 	name = "Shibari Body"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
-/*
+
 /datum/greyscale_config/shibari_worn_digi/body
 	name = "Shibari Body Digi"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
@@ -127,7 +127,6 @@
 	name = "Shibari Body Taur Hoof"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/body.json'
 
-*/
 //groin
 
 /datum/greyscale_config/shibari_clothes/groin
@@ -137,7 +136,7 @@
 /datum/greyscale_config/shibari_worn/groin
 	name = "Shibari Groin"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/groin.json'
-/*
+
 /datum/greyscale_config/shibari_worn_digi/groin
 	name = "Shibari Groin Digi"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/groin.json'
@@ -153,7 +152,7 @@
 /datum/greyscale_config/shibari_worn_taur_hoof/groin
 	name = "Shibari Groin Taur Hoof"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/groin.json'
-*/
+
 //fullbody
 
 /datum/greyscale_config/shibari_clothes/fullbody
@@ -163,7 +162,7 @@
 /datum/greyscale_config/shibari_worn/fullbody
 	name = "Shibari Fullbody"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/fullbody.json'
-/*
+
 /datum/greyscale_config/shibari_worn_digi/fullbody
 	name = "Shibari Fullbody Digi"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/fullbody.json'
@@ -179,7 +178,7 @@
 /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
 	name = "Shibari Fullbody Taur Hoof"
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/clothes/fullbody.json'
-
+/*
 //hands
 
 /datum/greyscale_config/shibari_clothes/hands
