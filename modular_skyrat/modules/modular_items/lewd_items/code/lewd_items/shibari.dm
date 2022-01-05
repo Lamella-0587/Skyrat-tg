@@ -15,7 +15,7 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 	greyscale_config = /datum/greyscale_config/shibari_rope
-	greyscale_colors = "#bf72de"
+	greyscale_colors = "#bd8fcf"
 
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
@@ -99,9 +99,9 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 							span_userdanger("[user] starts tying your groin!"),\
 							span_hear("You hear ropes being tightened."))
+						shibari_groin = new(src)
+						shibari_groin.set_greyscale(greyscale_colors)
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-							shibari_groin = new(src)
-							shibari_groin.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_groin.tightness = tightness
@@ -111,23 +111,30 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_groin)
+						else
+							qdel(shibari_groin)
 					else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/torso))
-						them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
-							span_userdanger("[user] starts tying your groin!"),\
-							span_hear("You hear ropes being tightened."))
-						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+						if(them.w_uniform.greyscale_colors == greyscale_colors)
+							them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
+								span_userdanger("[user] starts tying your groin!"),\
+								span_hear("You hear ropes being tightened."))
 							shibari_fullbody = new(src)
 							shibari_fullbody.set_greyscale(greyscale_colors)
-							qdel(them.w_uniform, force = TRUE)
-							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
-								use(1)
-								shibari_fullbody.tightness = tightness
-								shibari_fullbody = null
-								them.visible_message(span_warning("[user] tied [them]'s groin!"),\
-									span_userdanger("[user] tied your groin!"),\
-									span_hear("You hear ropes being completely tightened."))
+							if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+								qdel(them.w_uniform, force = TRUE)
+								if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+									use(1)
+									shibari_fullbody.tightness = tightness
+									shibari_fullbody = null
+									them.visible_message(span_warning("[user] tied [them]'s groin!"),\
+										span_userdanger("[user] tied your groin!"),\
+										span_hear("You hear ropes being completely tightened."))
+								else
+									qdel(shibari_fullbody)
 							else
 								qdel(shibari_fullbody)
+						else
+							to_chat(user, span_warning("You can't mix colors with this kind of rope!"))
 					else
 						to_chat(user, span_warning("They're already wearing something on this slot!"))
 
@@ -136,9 +143,9 @@
 						them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 							span_userdanger("[user] starts tying your chest!"),\
 							span_hear("You hear ropes being tightened."))
+						shibari_body = new(src)
+						shibari_body.set_greyscale(greyscale_colors)
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-							shibari_body = new(src)
-							shibari_body.set_greyscale(greyscale_colors)
 							if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 								use(1)
 								shibari_body.tightness = tightness
@@ -148,23 +155,30 @@
 									span_hear("You hear ropes being completely tightened."))
 							else
 								qdel(shibari_body)
+						else
+							qdel(shibari_body)
 					else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/groin))
-						them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
-							span_userdanger("[user] starts tying your chest!"),\
-							span_hear("You hear ropes being tightened."))
-						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+						if(them.w_uniform.greyscale_colors == greyscale_colors)
+							them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
+								span_userdanger("[user] starts tying your chest!"),\
+								span_hear("You hear ropes being tightened."))
 							shibari_fullbody = new(src)
 							shibari_fullbody.set_greyscale(greyscale_colors)
-							qdel(them.w_uniform, force = TRUE)
-							if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
-								use(1)
-								shibari_fullbody.tightness = tightness
-								shibari_fullbody = null
-								them.visible_message(span_warning("[user] tied [them]'s chest!"),\
-									span_userdanger("[user] tied your chest!"),\
-									span_hear("You hear ropes being completely tightened."))
+							if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+								qdel(them.w_uniform, force = TRUE)
+								if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+									use(1)
+									shibari_fullbody.tightness = tightness
+									shibari_fullbody = null
+									them.visible_message(span_warning("[user] tied [them]'s chest!"),\
+										span_userdanger("[user] tied your chest!"),\
+										span_hear("You hear ropes being completely tightened."))
+								else
+									qdel(shibari_fullbody)
 							else
 								qdel(shibari_fullbody)
+						else
+							to_chat(user, span_warning("You can't mix colors with this kind of rope!"))
 					else
 						to_chat(user, span_warning("They're already wearing something on this slot!"))
 
