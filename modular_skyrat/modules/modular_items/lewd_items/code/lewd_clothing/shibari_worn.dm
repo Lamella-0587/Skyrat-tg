@@ -98,10 +98,10 @@
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/body
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/body
-	//greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/body
-	//greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/body
-	//greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/body
-	//greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/body
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/body
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/body
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/body
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/body
 	greyscale_colors = "#bd8fcf"
 
 //processing stuff
@@ -121,10 +121,10 @@
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/groin
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/groin
-	//greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/groin
-	//greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/groin
-	//greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/groin
-	//greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/groin
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/groin
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/groin
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/groin
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/groin
 	greyscale_colors = "#bd8fcf"
 
 //stuff to apply processing on equip and add mood event for perverts
@@ -155,10 +155,10 @@
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/fullbody
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/fullbody
-	//greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/fullbody
-	//greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/fullbody
-	//greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/fullbody
-	//greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/fullbody
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/fullbody
+	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/fullbody
+	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
 	greyscale_colors = "#bd8fcf"
 
 //processing stuff
