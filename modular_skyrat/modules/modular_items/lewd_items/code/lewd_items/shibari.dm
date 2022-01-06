@@ -17,6 +17,9 @@
 	greyscale_config = /datum/greyscale_config/shibari_rope
 	greyscale_colors = "#bd8fcf"
 
+	greyscale_config_inhand_left = /datum/greyscale_config/shibari_rope_inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/shibari_rope_inhand_right
+
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
 

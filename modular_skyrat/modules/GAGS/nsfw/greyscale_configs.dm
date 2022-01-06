@@ -62,13 +62,13 @@
 
 /datum/greyscale_config/shibari_rope_inhand_left
 	name = "Shibari Rope inhand left"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari.json'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari_inhands.json'
 
 /datum/greyscale_config/shibari_rope_inhand_right
 	name = "Shibari Rope inhand right"
-	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari.json'
+	icon_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari_inhands.json'
 
 /datum/greyscale_config/shibari_rope/med
 	json_config = 'modular_skyrat/modules/GAGS/nsfw/json_configs/items/shibari_med.json'
