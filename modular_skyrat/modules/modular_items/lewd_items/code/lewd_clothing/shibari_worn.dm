@@ -6,7 +6,6 @@
 
 /obj/item/clothing/under/shibari
 	strip_delay = 100
-	breakouttime = 100
 	can_adjust = FALSE
 	body_parts_covered = NONE
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
@@ -171,7 +170,6 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	body_parts_covered = NONE
 	strip_delay = 100
-	breakouttime = 100
 	item_flags = DROPDEL
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
