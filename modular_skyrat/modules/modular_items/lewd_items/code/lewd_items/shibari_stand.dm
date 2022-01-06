@@ -126,6 +126,7 @@
 		if(buckle_mob(buckled, check_loc = check_loc))
 			var/obj/item/stack/shibari_rope/rope = user.get_active_held_item()
 			ropee = new()
+			ropee.set_greyscale(rope.greyscale_colors)
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
 			add_rope_overlays(ropee.greyscale_colors, hooman?.dna?.species?.mutant_bodyparts["taur"])
