@@ -106,7 +106,14 @@
 						shibari_groin.set_greyscale(greyscale_colors)
 						if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 							if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
-								use(1)
+								if(them?.dna?.mutant_bodyparts["taur"])
+									var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+									if(S.hide_legs)
+										use(2)
+									else
+										use(1)
+								else
+									use(1)
 								shibari_groin.tightness = tightness
 								shibari_groin = null
 								them.visible_message(span_warning("[user] tied [them]'s groin!"),\
@@ -126,7 +133,14 @@
 							if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 								qdel(them.w_uniform, force = TRUE)
 								if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
-									use(1)
+									if(them?.dna?.mutant_bodyparts["taur"])
+										var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+										if(S.hide_legs)
+											use(2)
+										else
+											use(1)
+									else
+										use(1)
 									shibari_fullbody.tightness = tightness
 									shibari_fullbody = null
 									them.visible_message(span_warning("[user] tied [them]'s groin!"),\
