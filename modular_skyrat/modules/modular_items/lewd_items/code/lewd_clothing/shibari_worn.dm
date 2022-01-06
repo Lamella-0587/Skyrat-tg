@@ -27,10 +27,27 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	. = ..()
 
+/obj/item/clothing/under/shibari/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/under/shibari/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/under/shibari/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
 /obj/item/clothing/under/shibari/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+/*
 /obj/item/clothing/under/shibari/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
@@ -38,6 +55,7 @@
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
 	. = ..()
+*/
 
 /obj/item/clothing/under/shibari/AltClick(mob/user)
 	. = ..()
@@ -181,10 +199,27 @@
 	rope.set_greyscale(greyscale_colors)
 	. = ..()
 
+/obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
+
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
+/*
 //unequip stuff for adding rope to hands
 /obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
 	if(iscarbon(user))
@@ -193,7 +228,7 @@
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
 	. = ..()
-
+*/
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
 	.=..()
@@ -235,6 +270,23 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+/obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/shoes/shibari_legs/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/shoes/shibari_legs/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
+/*
 //unequip stuff for adding rope to hands
 /obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
 	if(iscarbon(user))
@@ -243,7 +295,7 @@
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
 	. = ..()
-
+*/
 //stuff to apply mood event for perverts
 /obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
 	.=..()
