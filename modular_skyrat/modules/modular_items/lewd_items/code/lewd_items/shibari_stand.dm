@@ -22,6 +22,7 @@
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
 	cut_overlay(shibari_rope_overlay)
+	cut_overlay(shibari_rope_overlay_behind)
 	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
