@@ -142,8 +142,9 @@
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
 	cut_overlay(shibari_rope_overlay_behind)
-	shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[taur ? "[color]_snek" : "[color]"]", ABOVE_MOB_LAYER)
-	shibari_rope_overlay_behind = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_behind_[color]", BELOW_MOB_LAYER)
+	var/icon/rope_overlays = SSgreyscale.GetColoredIconByType(/datum/greyscale_config/shibari_stand_ropes, color)
+	shibari_rope_overlay = mutable_appearance(rope_overlays, "ropes_above[taur ? "_snek" : ""]", ABOVE_MOB_LAYER)
+	shibari_rope_overlay_behind = mutable_appearance(rope_overlays, "ropes_behind", BELOW_MOB_LAYER)
 	add_overlay(shibari_rope_overlay)
 	add_overlay(shibari_rope_overlay_behind)
 
@@ -201,7 +202,7 @@
 	icon_state = "shibari_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
-	greyscale_config = /datum/greyscale_config/shibari_stand
+	greyscale_config = /datum/greyscale_config/shibari_stand_item
 	greyscale_colors = "#bd8fcf"
 
 //Changing examine for this item

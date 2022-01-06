@@ -2,7 +2,7 @@
 	"shibari_legs": [
 		{
 			"type": "icon_state",
-			"icon_state": "shibari_legs",
+			"icon_state": "shibari_legs_greyscale",
 			"blend_mode": "overlay",
 			"color_ids": [ 1 ]
 		}

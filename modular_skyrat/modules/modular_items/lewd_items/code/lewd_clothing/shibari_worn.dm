@@ -187,9 +187,9 @@
 	breakouttime = 100
 	item_flags = DROPDEL
 
-	//greyscale_config = /datum/greyscale_config/shibari_clothes/hands
-	//greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
-	//greyscale_colors = "#bd8fcf"
+	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
+	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
@@ -240,10 +240,10 @@
 	slowdown = 4
 	item_flags = DROPDEL
 
-	//greyscale_config = /datum/greyscale_config/shibari_clothes/legs
-	//greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
-	//greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
-	//greyscale_colors = "#bd8fcf"
+	greyscale_config = /datum/greyscale_config/shibari_clothes/legs
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
+	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
