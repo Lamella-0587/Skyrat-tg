@@ -5,19 +5,10 @@
 #define SHIBARI_TIGHTNESS_HIGH (1<<2)
 
 /obj/item/clothing/under/shibari
-	/*
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
-	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
-	worn_icon_taur_snake = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi'
-	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-paw.dmi'
-	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
-	*/
 	strip_delay = 100
 	breakouttime = 100
 	can_adjust = FALSE
 	body_parts_covered = NONE
-	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	item_flags = DROPDEL
 	greyscale_colors = "#bd8fcf"
@@ -42,16 +33,12 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/under/shibari/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.w_uniform)
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
-		else
-			return
+	. = ..()
 
 /obj/item/clothing/under/shibari/AltClick(mob/user)
 	. = ..()
