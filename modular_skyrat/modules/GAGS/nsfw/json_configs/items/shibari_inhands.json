@@ -1,8 +1,8 @@
 {
-	"shibari_body": [
+	"shibari_rope": [
 		{
 			"type": "icon_state",
-			"icon_state": "shibari_body_greyscale",
+			"icon_state": "shibari_rope",
 			"blend_mode": "overlay",
 			"color_ids": [ 1 ]
 		}
