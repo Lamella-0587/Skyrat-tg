@@ -233,7 +233,7 @@
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
-		var/obj/structure/chair/shibari_stand/stand = new(get_turf(src)
+		var/obj/structure/chair/shibari_stand/stand = new(get_turf(src))
 		stand.set_greyscale(greyscale_colors)
 		qdel(src)
 	return TRUE

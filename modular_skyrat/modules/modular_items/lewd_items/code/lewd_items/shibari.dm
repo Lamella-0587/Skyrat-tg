@@ -73,7 +73,6 @@
 		return
 	if(ishuman(attacked))
 		if(attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-			var/mob/living/carbon/human/them = attacked
 			switch(user.zone_selected)
 				if(BODY_ZONE_L_LEG)
 					INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
