@@ -254,7 +254,7 @@
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	slowdown = 4
-	item_flags = DROPDEL
+	item_flags = DROPDEL|IGNORE_DIGITIGRADE
 
 	greyscale_config = /datum/greyscale_config/shibari_clothes/legs
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
