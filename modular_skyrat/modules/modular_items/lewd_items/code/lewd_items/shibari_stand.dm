@@ -68,6 +68,9 @@
 	var/mob/living/buckled = buckled_mob
 	if(buckled)
 		if(buckled != user)
+			buckled.visible_message(span_notice("[user] starts unbuckling [buckled] from [src]."),\
+				span_notice("[user] tries to unbuckle you from [src]."),\
+				span_hear("You hear loose ropes."))
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
 				return FALSE
 			buckled.visible_message(span_notice("[user] unbuckles [buckled] from [src]."),\
@@ -109,12 +112,8 @@
 		buckled.visible_message(span_warning("[user] starts tying [buckled] to \the [src]!"),\
 			span_userdanger("[user] starts tying you to \the [src]!"),\
 			span_hear("You hear ropes being tightened."))
-		if((HAS_TRAIT(user, TRAIT_RIGGER)))
-			if(!do_after(user, 5 SECONDS, buckled))
-				return FALSE
-		else
-			if(!do_after(user, 10 SECONDS, buckled))
-				return FALSE
+		if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
+			return FALSE
 
 		if(!is_user_buckle_possible(buckled, user, check_loc))
 			return FALSE
