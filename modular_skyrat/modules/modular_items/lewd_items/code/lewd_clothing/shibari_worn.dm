@@ -5,19 +5,9 @@
 #define SHIBARI_TIGHTNESS_HIGH (1<<2)
 
 /obj/item/clothing/under/shibari
-	/*
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
-	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
-	worn_icon_taur_snake = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi'
-	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-paw.dmi'
-	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
-	*/
 	strip_delay = 100
-	breakouttime = 100
 	can_adjust = FALSE
 	body_parts_covered = NONE
-	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	item_flags = DROPDEL
 	greyscale_colors = "#bd8fcf"
@@ -37,21 +27,35 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	. = ..()
 
+/obj/item/clothing/under/shibari/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/under/shibari/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/under/shibari/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
 /obj/item/clothing/under/shibari/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+/*
 /obj/item/clothing/under/shibari/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.w_uniform)
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
-		else
-			return
+	. = ..()
+*/
 
 /obj/item/clothing/under/shibari/AltClick(mob/user)
 	. = ..()
@@ -184,35 +188,47 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	body_parts_covered = NONE
 	strip_delay = 100
-	breakouttime = 100
 	item_flags = DROPDEL
 
-	//greyscale_config = /datum/greyscale_config/shibari_clothes/hands
-	//greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
-	//greyscale_colors = "#bd8fcf"
+	greyscale_config = /datum/greyscale_config/shibari_clothes/hands
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
+	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
 	rope.set_greyscale(greyscale_colors)
 	. = ..()
 
+/obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/gloves/shibari_hands/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
+
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
+/*
 //unequip stuff for adding rope to hands
 /obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.gloves)
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
-		else
-			return
-
+	. = ..()
+*/
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
 	.=..()
@@ -238,12 +254,12 @@
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	slowdown = 4
-	item_flags = DROPDEL
+	item_flags = DROPDEL|IGNORE_DIGITIGRADE
 
-	//greyscale_config = /datum/greyscale_config/shibari_clothes/legs
-	//greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
-	//greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
-	//greyscale_colors = "#bd8fcf"
+	greyscale_config = /datum/greyscale_config/shibari_clothes/legs
+	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
+	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
+	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
@@ -254,19 +270,32 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
+/obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+
+
+/obj/item/clothing/shoes/shibari_legs/proc/handle_take_off(datum/source, mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/obj/item/clothing/shoes/shibari_legs/proc/handle_take_off_async(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/hooman = user
+		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+			qdel(src)
+
+/*
 //unequip stuff for adding rope to hands
 /obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.shoes)
 			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 				qdel(src)
-		else
-			return
-
+	. = ..()
+*/
 //stuff to apply mood event for perverts
 /obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
 	.=..()

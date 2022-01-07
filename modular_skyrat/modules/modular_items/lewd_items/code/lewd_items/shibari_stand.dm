@@ -5,6 +5,7 @@
 	icon_state = "shibari_stand"
 	max_buckled_mobs = 1
 	max_integrity = 75
+	layer = 4
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -22,6 +23,9 @@
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
 	cut_overlay(shibari_rope_overlay)
+	cut_overlay(shibari_rope_overlay_behind)
+	if(ropee)
+		ropee.forceMove(get_turf(src))
 	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
@@ -64,6 +68,9 @@
 	var/mob/living/buckled = buckled_mob
 	if(buckled)
 		if(buckled != user)
+			buckled.visible_message(span_notice("[user] starts unbuckling [buckled] from [src]."),\
+				span_notice("[user] tries to unbuckle you from [src]."),\
+				span_hear("You hear loose ropes."))
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
 				return FALSE
 			buckled.visible_message(span_notice("[user] unbuckles [buckled] from [src]."),\
@@ -105,12 +112,8 @@
 		buckled.visible_message(span_warning("[user] starts tying [buckled] to \the [src]!"),\
 			span_userdanger("[user] starts tying you to \the [src]!"),\
 			span_hear("You hear ropes being tightened."))
-		if((HAS_TRAIT(user, TRAIT_RIGGER)))
-			if(!do_after(user, 5 SECONDS, buckled))
-				return FALSE
-		else
-			if(!do_after(user, 10 SECONDS, buckled))
-				return FALSE
+		if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
+			return FALSE
 
 		if(!is_user_buckle_possible(buckled, user, check_loc))
 			return FALSE
@@ -125,6 +128,7 @@
 		if(buckle_mob(buckled, check_loc = check_loc))
 			var/obj/item/stack/shibari_rope/rope = user.get_active_held_item()
 			ropee = new()
+			ropee.set_greyscale(rope.greyscale_colors)
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
 			add_rope_overlays(ropee.greyscale_colors, hooman?.dna?.species?.mutant_bodyparts["taur"])
@@ -142,8 +146,9 @@
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
 	cut_overlay(shibari_rope_overlay_behind)
-	shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[taur ? "[color]_snek" : "[color]"]", ABOVE_MOB_LAYER)
-	shibari_rope_overlay_behind = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_behind_[color]", BELOW_MOB_LAYER)
+	var/icon/rope_overlays = SSgreyscale.GetColoredIconByType(/datum/greyscale_config/shibari_stand_ropes, color)
+	shibari_rope_overlay = mutable_appearance(rope_overlays, "ropes_above[taur ? "_snek" : ""]", ABOVE_MOB_LAYER)
+	shibari_rope_overlay_behind = mutable_appearance(rope_overlays, "ropes_behind", BELOW_MOB_LAYER)
 	add_overlay(shibari_rope_overlay)
 	add_overlay(shibari_rope_overlay_behind)
 
@@ -201,7 +206,7 @@
 	icon_state = "shibari_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
-	greyscale_config = /datum/greyscale_config/shibari_stand
+	greyscale_config = /datum/greyscale_config/shibari_stand_item
 	greyscale_colors = "#bd8fcf"
 
 //Changing examine for this item
@@ -229,9 +234,8 @@
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
-		var/obj/structure/chair/shibari_stand/stand = new
+		var/obj/structure/chair/shibari_stand/stand = new(get_turf(src))
 		stand.set_greyscale(greyscale_colors)
-		stand.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
@@ -240,9 +244,8 @@
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble \the [src]."))
-		var/obj/item/shibari_stand_kit/kit = new
+		var/obj/item/shibari_stand_kit/kit = new(get_turf(src))
 		kit.set_greyscale(greyscale_colors)
-		kit.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
 	return TRUE

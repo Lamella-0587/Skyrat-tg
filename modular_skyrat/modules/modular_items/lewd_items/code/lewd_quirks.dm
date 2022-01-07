@@ -388,7 +388,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	mob_trait = TRAIT_ROPEBUNNY
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
-	icon = "rabbit"
+	icon = "link"
 
 /datum/quirk/ropebunny/post_add()
 	. = ..()
@@ -408,7 +408,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	mob_trait = TRAIT_RIGGER
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
-	icon = "lasso"
+	icon = "link"
 
 /datum/quirk/rigger/post_add()
 	. = ..()

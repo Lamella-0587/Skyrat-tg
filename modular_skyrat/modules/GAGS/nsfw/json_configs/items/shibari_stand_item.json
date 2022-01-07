@@ -8,7 +8,7 @@
 		},
 		{
 			"type": "icon_state",
-			"icon_state": "shibari_kit_frame",
+			"icon_state": "shibari_frame_greyscale",
 			"blend_mode": "overlay"
 		}
 	]
