@@ -5,6 +5,7 @@
 	icon_state = "shibari_stand"
 	max_buckled_mobs = 1
 	max_integrity = 75
+	layer = 4
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
