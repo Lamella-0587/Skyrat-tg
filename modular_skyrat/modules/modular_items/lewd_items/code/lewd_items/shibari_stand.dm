@@ -24,6 +24,8 @@
 	cut_overlay(shibari_shadow_overlay)
 	cut_overlay(shibari_rope_overlay)
 	cut_overlay(shibari_rope_overlay_behind)
+	if(ropee)
+		ropee.forceMove(get_turf(src))
 	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
