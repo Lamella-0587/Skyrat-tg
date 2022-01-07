@@ -103,17 +103,20 @@
 		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 			var/result_check
 			var/ropes_used = 1
+			var/slow = 0
 			if(them?.dna?.mutant_bodyparts["taur"])
 				var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 				if(S.hide_legs)
 					result_check = use(2)
 					ropes_used = 2
+					slow = 4
 				else
 					result_check = use(1)
 			else
 				result_check = use(1)
 			if(result_check)
 				shibari_groin = new(src)
+				shibari_groin.slowdown = slow
 				shibari_groin.set_greyscale(greyscale_colors)
 				shibari_groin.rope_amount = ropes_used
 				if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
@@ -203,9 +206,15 @@
 					span_userdanger("[user] starts tying your chest!"),\
 					span_hear("You hear ropes being tightened."))
 				if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+					var/slow = 0
+					if(them?.dna?.mutant_bodyparts["taur"])
+						var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+						if(S.hide_legs)
+							slow = 4
 					if(use(1))
 						var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
 						shibari_fullbody = new(src)
+						shibari_fullbody.slowdown = slow
 						shibari_fullbody.rope_amount = 1 + body_rope.rope_amount
 						shibari_fullbody.set_greyscale(greyscale_colors)
 						qdel(them.w_uniform, force = TRUE)
@@ -227,11 +236,13 @@
 				if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 					var/result_check
 					var/ropes_used = 1
+					var/slow = 0
 					if(them?.dna?.mutant_bodyparts["taur"])
 						var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 						if(S.hide_legs)
 							result_check = use(2)
 							ropes_used = 2
+							slow = 4
 						else
 							result_check = use(1)
 					else
@@ -239,6 +250,7 @@
 					if(result_check)
 						var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
 						shibari_fullbody = new(src)
+						shibari_fullbody.slowdown = slow
 						shibari_fullbody.rope_amount = ropes_used + body_rope.rope_amount
 						shibari_fullbody.set_greyscale(greyscale_colors)
 						qdel(them.w_uniform, force = TRUE)
