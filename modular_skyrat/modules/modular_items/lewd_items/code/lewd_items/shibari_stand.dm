@@ -233,9 +233,8 @@
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
-		var/obj/structure/chair/shibari_stand/stand = new
+		var/obj/structure/chair/shibari_stand/stand = new(get_turf(src)
 		stand.set_greyscale(greyscale_colors)
-		stand.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
@@ -244,9 +243,8 @@
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble \the [src]."))
-		var/obj/item/shibari_stand_kit/kit = new
+		var/obj/item/shibari_stand_kit/kit = new(get_turf(src))
 		kit.set_greyscale(greyscale_colors)
-		kit.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
 	return TRUE
