@@ -44,8 +44,7 @@
 	. = ..()
 	if(.)
 		var/obj/item/stack/F = .
-		F.greyscale_colors = greyscale_colors
-		F.update_greyscale()
+		F.set_greyscale(greyscale_colors)
 
 /obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
 	if(check.greyscale_colors == greyscale_colors)
