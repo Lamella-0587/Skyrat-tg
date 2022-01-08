@@ -161,9 +161,11 @@
 			span_userdanger("[user] starts tying your hands!"),\
 			span_hear("You hear ropes being tightened."))
 		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-			if(use(1))
+			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+			if(split_rope)
 				shibari_hands = new(src)
 				shibari_hands.set_greyscale(greyscale_colors)
+				split_rope.forceMove(shibari_hands)
 				if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,TRUE,FALSE,TRUE))
 					shibari_hands = null
 					them.visible_message(span_warning("[user] tied [them]'s hands!"),\
@@ -185,9 +187,11 @@
 			span_userdanger("[user] starts tying your feet!"),\
 			span_hear("You hear ropes being tightened."))
 		if(do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
-			if(use(1))
+			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
+			if(split_rope)
 				shibari_legs = new(src)
 				shibari_legs.set_greyscale(greyscale_colors)
+				split_rope.forceMove(shibari_legs)
 				if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,TRUE,FALSE,TRUE))
 					shibari_legs = null
 					them.visible_message(span_warning("[user] tied [them]'s feet!"),\

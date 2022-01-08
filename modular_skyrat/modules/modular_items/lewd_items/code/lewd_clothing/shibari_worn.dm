@@ -183,8 +183,8 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
-	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
-	rope.set_greyscale(greyscale_colors)
+	for(var/obj/item in contents)
+		item.forceMove(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
@@ -241,8 +241,8 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
-	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
-	rope.set_greyscale(greyscale_colors)
+	for(var/obj/item in contents)
+		item.forceMove(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
