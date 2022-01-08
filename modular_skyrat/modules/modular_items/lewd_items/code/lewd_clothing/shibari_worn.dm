@@ -17,6 +17,19 @@
 	///Rope amount yielded from this apparel
 	var/rope_amount = 1
 
+	///should this clothing item use the emissive system
+	var/glow = FALSE
+
+/obj/item/clothing/under/shibari/update_overlays()
+	. = ..()
+	if(glow)
+		. += emissive_appearance(icon, icon_state, alpha = alpha * (3/4))
+
+/obj/item/clothing/under/shibari/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(glow)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha * (3/4))
+
 /obj/item/clothing/under/shibari/Destroy(force)
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
@@ -182,6 +195,19 @@
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/hands
 	greyscale_colors = "#bd8fcf"
 
+	///should this clothing item use the emissive system
+	var/glow = FALSE
+
+/obj/item/clothing/gloves/shibari_hands/update_overlays()
+	. = ..()
+	if(glow)
+		. += emissive_appearance(icon, icon_state, alpha = alpha * (3/4))
+
+/obj/item/clothing/gloves/shibari_hands/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(glow)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha * (3/4))
+
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/mob/living/carbon/human/hooman = loc
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
@@ -242,6 +268,20 @@
 	greyscale_config_worn = /datum/greyscale_config/shibari_worn/legs
 	greyscale_config_worn_digi = /datum/greyscale_config/shibari_worn_digi/legs
 	greyscale_colors = "#bd8fcf"
+
+	///should this clothing item use the emissive system
+	var/glow = FALSE
+
+/obj/item/clothing/shoes/shibari_legs/update_overlays()
+	. = ..()
+	if(glow)
+		. += emissive_appearance(icon, icon_state, alpha = alpha * (3/4))
+
+/obj/item/clothing/shoes/shibari_legs/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(glow)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha * (3/4))
+
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	var/mob/living/carbon/human/hooman = loc

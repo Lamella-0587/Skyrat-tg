@@ -22,6 +22,8 @@
 
 	///We use this var to change tightness var on worn version of this item.
 	var/tightness = ROPE_TIGHTNESS_LOW
+	///should clothing items created by this stack glow
+	var/glow = FALSE
 
 	///Things this rope can transform into when it's tied to a person
 	var/obj/item/clothing/under/shibari/torso/shibari_body
@@ -29,6 +31,30 @@
 	var/obj/item/clothing/under/shibari/full/shibari_fullbody
 	var/obj/item/clothing/shoes/shibari_legs/shibari_legs
 	var/obj/item/clothing/gloves/shibari_hands/shibari_hands
+
+//This part of code spawns ropes with full stack.
+/obj/item/stack/shibari_rope/full
+	amount = 5
+
+/obj/item/stack/shibari_rope/glow
+	merge_type = /obj/item/stack/shibari_rope/glow
+	light_system = MOVABLE_LIGHT
+	light_range = 1
+	light_on = TRUE
+	glow = TRUE
+
+/obj/item/stack/shibari_rope/glow/full
+	amount = 5
+
+/obj/item/stack/shibari_rope/update_overlays()
+	. = ..()
+	if(glow)
+		. += emissive_appearance(icon, icon_state, alpha = alpha * (3/4))
+
+/obj/item/stack/shibari_rope/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+	. = ..()
+	if(glow)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha * (3/4))
 
 /obj/item/stack/shibari_rope/update_icon_state()
 	if(amount <= (max_amount * (1/3)))
@@ -115,6 +141,7 @@
 				shibari_groin = new(src)
 				shibari_groin.slowdown = slow
 				shibari_groin.set_greyscale(greyscale_colors)
+				shibari_groin.glow = glow
 				split_rope.forceMove(shibari_groin)
 				if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
 					shibari_groin.tightness = tightness
@@ -140,6 +167,7 @@
 			if(split_rope)
 				shibari_body = new(src)
 				shibari_body.set_greyscale(greyscale_colors)
+				shibari_body.glow = glow
 				split_rope.forceMove(shibari_body)
 				if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,TRUE,FALSE,TRUE))
 					shibari_body.tightness = tightness
@@ -164,6 +192,7 @@
 			if(split_rope)
 				shibari_hands = new(src)
 				shibari_hands.set_greyscale(greyscale_colors)
+				shibari_hands.glow = glow
 				split_rope.forceMove(shibari_hands)
 				if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,TRUE,FALSE,TRUE))
 					shibari_hands = null
@@ -190,6 +219,7 @@
 			if(split_rope)
 				shibari_legs = new(src)
 				shibari_legs.set_greyscale(greyscale_colors)
+				shibari_legs.glow = glow
 				split_rope.forceMove(shibari_legs)
 				if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,TRUE,FALSE,TRUE))
 					shibari_legs = null
@@ -218,6 +248,7 @@
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
 					shibari_fullbody = new(src)
 					shibari_fullbody.slowdown = slow
+					shibari_fullbody.glow = glow
 					split_rope.forceMove(shibari_fullbody)
 					for(var/obj/thing in body_rope.contents)
 						thing.forceMove(shibari_fullbody)
@@ -251,6 +282,7 @@
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
 					shibari_fullbody = new(src)
 					shibari_fullbody.slowdown = slow
+					shibari_fullbody.glow = glow
 					split_rope.forceMove(shibari_fullbody)
 					for(var/obj/thing in body_rope.contents)
 						thing.forceMove(shibari_fullbody)
@@ -281,10 +313,6 @@
 			tightness = ROPE_TIGHTNESS_HIGH
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 75)
 			to_chat(user, span_notice("You strongly tightened the ropes"))
-
-//This part of code spawns ropes with full stack.
-/obj/item/stack/shibari_rope/full
-	amount = 5
 
 #undef ROPE_TIGHTNESS_LOW
 #undef ROPE_TIGHTNESS_MED
