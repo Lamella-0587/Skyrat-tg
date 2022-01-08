@@ -18,10 +18,8 @@
 	var/rope_amount = 1
 
 /obj/item/clothing/under/shibari/Destroy(force)
-	if(!force)
-		var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
-		rope.amount = rope_amount
-		rope.set_greyscale(greyscale_colors)
+	for(var/obj/item in contents)
+		item.forceMove(get_turf(src))
 	var/mob/living/carbon/human/hooman = loc
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
@@ -46,16 +44,6 @@
 /obj/item/clothing/under/shibari/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/*
-/obj/item/clothing/under/shibari/attack_hand(mob/user)
-	if(iscarbon(user))
-		var/mob/living/carbon/human/hooman = user
-		if(src == hooman.w_uniform)
-			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
-				qdel(src)
-	. = ..()
-*/
 
 /obj/item/clothing/under/shibari/AltClick(mob/user)
 	. = ..()
@@ -112,7 +100,7 @@
 /obj/item/clothing/under/shibari/torso/process(delta_time)
 	. = ..()
 	var/mob/living/carbon/human/hooman = loc
-	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 30)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 30)
 		if(hooman.pain < 25)
 			hooman.adjustPain(0.6 * delta_time)
 		if(prob(10))
@@ -144,11 +132,11 @@
 /obj/item/clothing/under/shibari/groin/process(delta_time)
 	. = ..()
 	var/mob/living/carbon/human/hooman = loc
-	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.arousal < 20)
+	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
 		hooman.adjustPleasure(0.6 * delta_time)
-	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.arousal < 40)
+	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
 		hooman.adjustPleasure(0.6 * delta_time)
-	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 60)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH)
 		hooman.adjustPleasure(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/full
@@ -163,17 +151,17 @@
 	greyscale_config_worn_taur_snake = /datum/greyscale_config/shibari_worn_taur_snake/fullbody
 	greyscale_config_worn_taur_paw = /datum/greyscale_config/shibari_worn_taur_paw/fullbody
 	greyscale_config_worn_taur_hoof = /datum/greyscale_config/shibari_worn_taur_hoof/fullbody
-	greyscale_colors = "#bd8fcf"
+	greyscale_colors = "#bd8fcf#bd8fcf"
 
 //processing stuff
 /obj/item/clothing/under/shibari/full/process(delta_time)
 	. = ..()
 	var/mob/living/carbon/human/hooman = loc
-	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.arousal < 20)
+	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
 		hooman.adjustPleasure(0.6 * delta_time)
-	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.arousal < 40)
+	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
 		hooman.adjustPleasure(0.6 * delta_time)
-	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 70)
+	if(tightness == SHIBARI_TIGHTNESS_HIGH)
 		hooman.adjustPleasure(0.6 * delta_time)
 		if(hooman.pain < 40)
 			hooman.adjustPain(0.6 * delta_time)
@@ -195,8 +183,11 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
-	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
-	rope.set_greyscale(greyscale_colors)
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	for(var/obj/item in contents)
+		item.forceMove(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
@@ -219,16 +210,7 @@
 /obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-/*
-//unequip stuff for adding rope to hands
-/obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
-	if(iscarbon(user))
-		var/mob/living/carbon/human/hooman = user
-		if(src == hooman.gloves)
-			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
-				qdel(src)
-	. = ..()
-*/
+
 //stuff to apply mood event for perverts
 /obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
 	.=..()
@@ -262,8 +244,11 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
-	var/obj/item/stack/shibari_rope/rope = new(get_turf(src))
-	rope.set_greyscale(greyscale_colors)
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
+	for(var/obj/item in contents)
+		item.forceMove(get_turf(src))
 	. = ..()
 
 /obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
@@ -286,16 +271,6 @@
 		if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 			qdel(src)
 
-/*
-//unequip stuff for adding rope to hands
-/obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
-	if(iscarbon(user))
-		var/mob/living/carbon/human/hooman = user
-		if(src == hooman.shoes)
-			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
-				qdel(src)
-	. = ..()
-*/
 //stuff to apply mood event for perverts
 /obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
 	.=..()

@@ -2,9 +2,15 @@
 	"shibari_fullbody": [
 		{
 			"type": "icon_state",
-			"icon_state": "shibari_fullbody_greyscale",
+			"icon_state": "shibari_fullbody_top_greyscale",
 			"blend_mode": "overlay",
 			"color_ids": [ 1 ]
+		},
+		{
+			"type": "icon_state",
+			"icon_state": "shibari_fullbody_bottom_greyscale",
+			"blend_mode": "overlay",
+			"color_ids": [ 2 ]
 		}
 	]
 }
