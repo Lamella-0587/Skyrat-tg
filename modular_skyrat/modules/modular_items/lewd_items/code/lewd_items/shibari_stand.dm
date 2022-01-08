@@ -82,7 +82,7 @@
 				span_notice("[user] unbuckles you from [src]."),\
 				span_hear("You hear loose ropes."))
 		else
-			user.visible_message(span_notice("You unbuckle yourself from [src]."),\
+			user.visible_message(span_notice("[user] starts unbuckling themselves from [src]."),\
 				span_notice("[user] unbuckles themselves from [src]."),\
 				span_hear("You hear loose ropes."))
 		add_fingerprint(user)
