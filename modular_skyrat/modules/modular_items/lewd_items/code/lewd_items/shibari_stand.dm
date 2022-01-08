@@ -6,6 +6,9 @@
 	max_buckled_mobs = 1
 	max_integrity = 75
 	layer = 4
+	item_chair = null
+	buildstacktype = null
+	buckle_message = FALSE
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -37,6 +40,7 @@
 /obj/structure/chair/shibari_stand/ComponentInitialize()
 	return
 
+/*
 /obj/structure/chair/shibari_stand/attack_hand(mob/living/user)
 	if(get_dist(user, src) > 1)
 		return ..()
@@ -47,6 +51,7 @@
 	else
 		var/mob/living/buckled_mob = buckled_mobs[1]
 		user_unbuckle_mob(buckled_mob, user)
+*/
 
 //Examine changes for this structure
 /obj/structure/chair/shibari_stand/examine(mob/user)
@@ -138,6 +143,9 @@
 			buckled.visible_message(span_warning("[user] tied [buckled] to \the [src]!"),\
 				span_userdanger("[user] tied you to \the [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
+			return TRUE
+		else
+			return FALSE
 	else
 		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
 		return FALSE
