@@ -183,6 +183,9 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
 	. = ..()
@@ -241,6 +244,9 @@
 	greyscale_colors = "#bd8fcf"
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
+	var/mob/living/carbon/human/hooman = loc
+	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
+		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	for(var/obj/item in contents)
 		item.forceMove(get_turf(src))
 	. = ..()
