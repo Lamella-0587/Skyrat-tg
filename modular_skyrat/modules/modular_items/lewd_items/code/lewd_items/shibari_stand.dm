@@ -34,6 +34,9 @@
 		current_mob.update_abstract_handcuffed()
 	unbuckle_all_mobs(TRUE)
 
+/obj/structure/chair/shibari_stand/ComponentInitialize()
+	return
+
 /obj/structure/chair/shibari_stand/attack_hand(mob/living/user)
 	if(get_dist(user, src) > 1)
 		return ..()
@@ -78,7 +81,7 @@
 				span_hear("You hear loose ropes."))
 		else
 			user.visible_message(span_notice("You unbuckle yourself from [src]."),\
-				span_notice("You unbuckle yourself from [src]."),\
+				span_notice("[user] unbuckles themselves from [src]."),\
 				span_hear("You hear loose ropes."))
 		add_fingerprint(user)
 		if(isliving(buckled.pulledby))
