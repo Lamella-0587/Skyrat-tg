@@ -49,12 +49,12 @@
 /obj/item/stack/shibari_rope/update_overlays()
 	. = ..()
 	if(glow)
-		. += emissive_appearance(icon, icon_state, alpha = alpha * (3/4))
+		. += emissive_appearance(icon, icon_state, alpha = alpha/2)
 
 /obj/item/stack/shibari_rope/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(glow)
-		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha * (3/4))
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha/2)
 
 /obj/item/stack/shibari_rope/update_icon_state()
 	if(amount <= (max_amount * (1/3)))
