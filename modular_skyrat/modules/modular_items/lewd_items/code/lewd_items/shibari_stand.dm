@@ -23,6 +23,16 @@
 	///The rope inside the stand, that's actually tying the person to it
 	var/obj/item/stack/shibari_rope/ropee = null
 
+// Object cannot rotate
+/obj/structure/chair/shibari_stand/can_be_rotated(mob/user)
+	return FALSE
+// User cannot rotate the object
+/obj/structure/chair/shibari_stand/can_user_rotate(mob/user)
+	return FALSE
+// Another plug to disable rotation
+/obj/structure/chair/shibari_stand/attack_tk(mob/user)
+	return FALSE
+
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
 	cut_overlay(shibari_rope_overlay)
@@ -39,19 +49,6 @@
 
 /obj/structure/chair/shibari_stand/ComponentInitialize()
 	return
-
-/*
-/obj/structure/chair/shibari_stand/attack_hand(mob/living/user)
-	if(get_dist(user, src) > 1)
-		return ..()
-	var/mob/living/attacked_mob = locate() in src.loc
-	if(!has_buckled_mobs())
-		if(attacked_mob?.can_buckle_to)
-			user_buckle_mob(attacked_mob, user, check_loc = TRUE)
-	else
-		var/mob/living/buckled_mob = buckled_mobs[1]
-		user_unbuckle_mob(buckled_mob, user)
-*/
 
 //Examine changes for this structure
 /obj/structure/chair/shibari_stand/examine(mob/user)
