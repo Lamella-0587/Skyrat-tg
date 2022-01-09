@@ -41,7 +41,12 @@
 	light_system = MOVABLE_LIGHT
 	light_range = 1
 	light_on = TRUE
+	light_power = 3
 	glow = TRUE
+
+/obj/item/stack/shibari_rope/glow/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
+	. = ..()
+	set_light_color(greyscale_colors)
 
 /obj/item/stack/shibari_rope/glow/full
 	amount = 5
