@@ -201,12 +201,12 @@
 /obj/item/clothing/gloves/shibari_hands/update_overlays()
 	. = ..()
 	if(glow)
-		. += emissive_appearance(icon, icon_state, alpha = alpha)
+		. += emissive_appearance(icon, icon_state, alpha = 100)
 
 /obj/item/clothing/gloves/shibari_hands/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(glow)
-		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = 100)
 
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/mob/living/carbon/human/hooman = loc
@@ -275,12 +275,12 @@
 /obj/item/clothing/shoes/shibari_legs/update_overlays()
 	. = ..()
 	if(glow)
-		. += emissive_appearance(icon, icon_state, alpha = alpha)
+		. += emissive_appearance(icon, icon_state, alpha = 100)
 
 /obj/item/clothing/shoes/shibari_legs/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(glow)
-		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha)
+		. += emissive_appearance(standing.icon, standing.icon_state, alpha = 100)
 
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()
