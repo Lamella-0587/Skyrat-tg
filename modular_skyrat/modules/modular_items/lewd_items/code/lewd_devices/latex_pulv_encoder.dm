@@ -10,7 +10,7 @@
 	var/obj/item/firing_pin/latexpulvmodule/pin = null
 	var/programslist = null // Это будет полный список всех возможных программ
 	var/pai_candidates = null // Это будет список всех доступных кандидатов в ИИ
-	var/latexprogram = null // Это будет структура с итоговой программой
+	var/latexprogram = null // Это будет структура с итоговой программой.
 
 /obj/item/latex_pulv_encoder/Initialize(mapload)
 	. = ..()
