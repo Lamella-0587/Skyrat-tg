@@ -389,6 +389,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
+
+/datum/loadout_item/under/miscellaneous/tactical_pants
+	name = "Tactical Pants"
+	item_path = /obj/item/clothing/under/pants/tactical
+
 //HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
 	name = "Blood-red Pajamas"
@@ -907,3 +912,16 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/basil
 	name = "Basil Uniform"
 	item_path = /obj/item/clothing/under/costume/basil_boys
+
+/datum/loadout_item/under/formal/inferno
+	name = "Inferno Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno
+
+/datum/loadout_item/under/formal/inferno_skirt
+	name = "Inferno Skirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+
+/datum/loadout_item/under/formal/designer_inferno
+	name = "Designer Inferno Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	restricted_roles = list(JOB_LAWYER)
