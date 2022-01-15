@@ -38,6 +38,7 @@
 
 /obj/item/stack/shibari_rope/glow
 	merge_type = /obj/item/stack/shibari_rope/glow
+	icon_state = "shibari_rope_glow"
 	light_system = MOVABLE_LIGHT
 	light_range = 1
 	light_on = TRUE
