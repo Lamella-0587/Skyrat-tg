@@ -22,6 +22,7 @@
 					/obj/item/clothing/sextoy/vibroring = 6,
 					/obj/item/condom_pack = 20,
 					/obj/item/stack/shibari_rope/full = 10,
+					/obj/item/stack/shibari_rope/glow/full = 10,
 					/obj/item/clothing/sextoy/dildo = 8,
 					/obj/item/clothing/sextoy/custom_dildo = 8,
 					/obj/item/tickle_feather = 8,
