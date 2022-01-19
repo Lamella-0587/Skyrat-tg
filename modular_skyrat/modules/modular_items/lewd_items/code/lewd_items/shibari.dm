@@ -252,7 +252,7 @@
 				var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 				if(split_rope)
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if(body_rope.merge_type == merge_type)
+					if((body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)) || (!body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)))
 						shibari_fullbody = new(src)
 						shibari_fullbody.slowdown = slow
 						shibari_fullbody.glow = glow
@@ -289,7 +289,7 @@
 					split_rope = split_stack(null, 1)
 				if(split_rope)
 					var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
-					if(body_rope.merge_type == merge_type)
+					if((body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)) || (!body_rope.glow && (merge_type == /obj/item/stack/shibari_rope/glow)))
 						shibari_fullbody = new(src)
 						shibari_fullbody.slowdown = slow
 						shibari_fullbody.glow = glow
