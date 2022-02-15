@@ -112,6 +112,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
 
+	//SKYRAT EDIT ADDITION
+	if(LAZYLEN(SSopposing_force.submitted_applications))
+		for(var/datum/opposing_force/opposing_force as anything in SSopposing_force.submitted_applications)
+			L[++L.len] = list("[opposing_force.handling_admin ? "H-[opposing_force.handling_admin]. " : ""]OPFOR: [opposing_force.ckey]", null, REF(opposing_force))
+	//SKYRAT EDIT END
 	return L
 
 //Reassociate still open ticket if one exists
@@ -128,7 +133,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/T = C.current_ticket
 		T.AddInteraction("Client disconnected.")
 		//Gotta async this cause clients only logout on destroy, and sleeping in destroy is disgusting
-		INVOKE_ASYNC(SSblackbox, /datum/controller/subsystem/blackbox/proc/LogAhelp, T, "Disconnected", "Client disconnected", C.ckey)
+		INVOKE_ASYNC(SSblackbox, /datum/controller/subsystem/blackbox/proc/LogAhelp, T.id, "Disconnected", "Client disconnected", C.ckey)
 		T.initiator = null
 
 //Get a ticket given a ckey
