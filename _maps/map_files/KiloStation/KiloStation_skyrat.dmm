@@ -8543,9 +8543,6 @@
 /turf/open/floor/plating,
 /area/hallway/primary/fore)
 "aEG" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -8554,7 +8551,6 @@
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "aEH" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -8563,6 +8559,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/atmospherics/components/binary/tank_compressor,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "aEK" = (
@@ -15167,9 +15164,6 @@
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "bbn" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -15181,6 +15175,7 @@
 	name = "science camera";
 	network = list("ss13","rd")
 	},
+/obj/machinery/atmospherics/components/trinary/filter/flipped,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "bbp" = (
@@ -15310,13 +15305,13 @@
 /turf/open/floor/iron/showroomfloor,
 /area/medical/storage)
 "bbS" = (
-/obj/machinery/atmospherics/components/trinary/mixer/flipped{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "bbU" = (
@@ -15380,9 +15375,6 @@
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "bcc" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -15415,6 +15407,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/iron/dark,
 /area/science/mixing/chamber)
 "bch" = (
@@ -15595,6 +15588,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "bcJ" = (
@@ -20725,12 +20719,14 @@
 	},
 /area/maintenance/port/aft)
 "bEn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
 /area/maintenance/central)
 "bEp" = (
 /obj/effect/turf_decal/tile/blue{
@@ -25304,7 +25300,7 @@
 	},
 /obj/item/clothing/suit/jacket{
 	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
+	icon_state = "noirdet";
 	name = "trenchcoat";
 	pixel_x = 4;
 	pixel_y = 4
@@ -39228,16 +39224,6 @@
 /obj/item/analyzer,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"enJ" = (
-/obj/machinery/door/airlock/external{
-	name = "Atmospherics External Airlock";
-	req_access_txt = "24"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/engineering/atmos)
 "enM" = (
 /obj/item/radio/intercom/directional/west,
 /obj/structure/window/reinforced,
@@ -40157,7 +40143,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "eIs" = (
 /obj/structure/table,
 /obj/machinery/light/directional/west,
@@ -41308,11 +41294,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/captain)
-"fhA" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/engineering/atmos)
 "fhH" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -44104,6 +44085,7 @@
 	dir = 4;
 	pixel_x = 25
 	},
+/obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/iron/dark,
 /area/science/mixing/chamber)
 "gxr" = (
@@ -46648,9 +46630,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/meter,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1
+	},
 /obj/machinery/light_switch/directional/east,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "hNY" = (
@@ -50036,9 +50019,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/pda_ad{
-	pixel_y = -32
-	},
 /turf/open/floor/carpet/green,
 /area/service/library)
 "jmh" = (
@@ -52427,7 +52407,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/jacket{
 	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
+	icon_state = "noirdet";
 	name = "trenchcoat"
 	},
 /obj/item/clothing/suit/jacket{
@@ -52864,7 +52844,7 @@
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "kxi" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -54701,9 +54681,6 @@
 /obj/item/rcl/pre_loaded,
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
-/obj/structure/sign/painting/library{
-	pixel_y = 32
-	},
 /turf/open/floor/iron/dark,
 /area/service/library)
 "lnA" = (
@@ -58475,7 +58452,7 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/item/radio/intercom/directional/north,
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/suit_storage_unit/medical,
 /turf/open/floor/iron/dark,
 /area/medical/paramedic)
 "mVX" = (
@@ -60377,7 +60354,7 @@
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/engineering/atmos)
+/area/maintenance/disposal/incinerator)
 "nYd" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -61388,9 +61365,9 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /obj/item/crowbar/red,
 /obj/item/toy/figure/roboticist{
 	pixel_x = 6
@@ -64136,6 +64113,9 @@
 /obj/item/hand_labeler,
 /obj/machinery/light/small/directional/south,
 /obj/item/radio/intercom/directional/east,
+/obj/structure/sign/painting/library{
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark,
 /area/service/library)
 "pBd" = (
@@ -64577,16 +64557,6 @@
 "pKa" = (
 /turf/closed/wall/r_wall/rust,
 /area/command/heads_quarters/cmo)
-"pKi" = (
-/obj/machinery/door/airlock/external{
-	name = "Atmospherics External Airlock";
-	req_access_txt = "24"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/engineering/atmos)
 "pKt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -65294,6 +65264,22 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/obj/item/computer_hardware/hard_drive/portable{
+	pixel_x = -2
+	},
 /turf/open/floor/iron/dark,
 /area/science/misc_lab)
 "qaY" = (
@@ -68436,14 +68422,14 @@
 /turf/open/floor/iron/showroomfloor,
 /area/medical/medbay/central)
 "ruR" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 1
-	},
 /obj/effect/turf_decal/box/corners,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/computer/atmos_control/ordnancemix{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "rvs" = (
@@ -72054,13 +72040,14 @@
 /turf/open/floor/iron/dark,
 /area/cargo/storage)
 "tlV" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/effect/turf_decal/box/corners{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/item/radio/intercom/directional/north,
-/obj/machinery/portable_atmospherics/canister,
+/obj/machinery/portable_atmospherics/scrubber{
+	name = "scrubber ducky"
+	},
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "tmg" = (
@@ -73626,14 +73613,12 @@
 /turf/open/floor/plating,
 /area/command/bridge)
 "tQi" = (
-/obj/machinery/doppler_array/research/science{
-	dir = 4
-	},
 /obj/item/radio/intercom/directional/east,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/research/anomaly_refinery,
 /turf/open/floor/iron/dark,
 /area/science/misc_lab)
 "tQw" = (
@@ -77434,7 +77419,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
-/obj/machinery/research/explosive_compressor,
 /turf/open/floor/iron/showroomfloor,
 /area/science/misc_lab)
 "vAx" = (
@@ -77714,7 +77698,7 @@
 /obj/item/electronics/airlock{
 	pixel_y = 6
 	},
-/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/engine,
 /area/engineering/storage/tech)
 "vIb" = (
@@ -78670,9 +78654,6 @@
 "wei" = (
 /turf/closed/wall/rust,
 /area/cargo/sorting)
-"wev" = (
-/turf/open/floor/plating,
-/area/engineering/atmos)
 "weD" = (
 /obj/machinery/modular_computer/console/preset/engineering{
 	dir = 4
@@ -80976,17 +80957,6 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "xfS" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching the test chamber.";
-	dir = 8;
-	layer = 4;
-	name = "Test Chamber Telescreen";
-	network = list("ordnance");
-	pixel_x = 30
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -80997,6 +80967,10 @@
 /obj/machinery/computer/pod/old/mass_driver_controller/ordnancedriver/longrange{
 	pixel_y = -26
 	},
+/obj/machinery/doppler_array{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
 /area/science/misc_lab)
 "xgo" = (
@@ -108080,7 +108054,7 @@ lnq
 pkU
 pBc
 thp
-bEn
+bRY
 nJY
 xFx
 kbk
@@ -108337,7 +108311,7 @@ lXq
 cRN
 sim
 sim
-bRX
+bEn
 mSA
 gml
 fZk
@@ -109925,7 +109899,7 @@ bvF
 idD
 acm
 rJU
-enJ
+jOO
 aFI
 tIV
 wDG
@@ -110182,7 +110156,7 @@ oaK
 oLp
 tvH
 rJU
-fhA
+kpf
 aFI
 gzy
 tXc
@@ -111210,7 +111184,7 @@ fFk
 rop
 rgj
 nHA
-wev
+tNt
 aFI
 fvj
 rok
@@ -111467,7 +111441,7 @@ mXf
 yfh
 cKv
 wEf
-pKi
+xSr
 aFJ
 aFJ
 aFJ

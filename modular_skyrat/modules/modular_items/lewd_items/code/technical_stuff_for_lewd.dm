@@ -646,6 +646,14 @@
 	holder.update_inv_penis()
 	holder.fan_hud_set_fandom()
 
+/// A check to confirm if you can open the toy's color/design radial menu
+/obj/item/clothing/sextoy/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
+
 /////////////////////////////
 // ICON UPDATING EXTENTION //
 /////////////////////////////
@@ -1231,7 +1239,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
 
-////
 /datum/status_effect/incapacitating/livniglatexspread
 	id = "livniglatexspread"
 	var/obj/effect/temp_visual/curse/latexspread_effect = new
@@ -1322,3 +1329,6 @@ GLOBAL_LIST_INIT(livinglatex_recipes, list(
 
 // List of available latex colors. If you add additional color - add it to this list and acces to it through this list
 GLOBAL_LIST_INIT(latexcolorlist, list("black", "pink", "yellow", "red", "green", "teal"))
+
+/obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
+	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
