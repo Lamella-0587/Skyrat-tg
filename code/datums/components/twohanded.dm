@@ -17,6 +17,7 @@
 	var/icon_wielded = FALSE /// The icon that will be used when wielded
 	var/obj/item/offhand/offhand_item = null /// Reference to the offhand created for the item
 	var/sharpened_increase = 0 /// The amount of increase recived from sharpening the item
+	var/datum/callback/is_wieldable = null //SKYRAT EDIT: Added callback for checking if the thing should be wieldable
 /**
 
  * Two Handed component
@@ -32,7 +33,7 @@
  * * icon_wielded (optional) The icon to be used when wielded
  */
 /datum/component/two_handed/Initialize(require_twohands=FALSE, wieldsound=FALSE, unwieldsound=FALSE, attacksound=FALSE, \
-										force_multiplier=0, force_wielded=0, force_unwielded=0, icon_wielded=FALSE)
+										force_multiplier=0, force_wielded=0, force_unwielded=0, icon_wielded=FALSE, datum/callback/is_wieldable = null) //SKYRAT EDIT: Added callback arg for checking if the thing should be wieldable
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -45,6 +46,7 @@
 	src.force_unwielded = force_unwielded
 	src.icon_wielded = icon_wielded
 
+	src.is_wieldable = is_wieldable //SKYRAT EDIT: Added callback for checking if the thing should be wieldable
 	if(require_twohands)
 		ADD_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS, ABSTRACT_ITEM_TRAIT)
 
@@ -69,6 +71,10 @@
 		src.force_unwielded = force_unwielded
 	if(icon_wielded)
 		src.icon_wielded = icon_wielded
+	//SKYRAT EDIT BEGIN: Added callback for checking if the thing should be wieldable
+	if(is_wieldable)
+		src.is_wieldable = is_wieldable
+	//SKYRAT EDIT END
 
 // register signals withthe parent item
 /datum/component/two_handed/RegisterWithParent()
@@ -93,8 +99,13 @@
 /// Triggered on equip of the item containing the component
 /datum/component/two_handed/proc/on_equip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
+	//SKYRAT EDIT BEGIN callback checks
+	var/callback_check = TRUE
+	if(is_wieldable)
+		callback_check = is_wieldable.Invoke(source, user)
 
-	if(require_twohands && slot == ITEM_SLOT_HANDS) // force equip the item
+	if(require_twohands && slot == ITEM_SLOT_HANDS && callback_check) // force equip the item
+	//SKYRAT EDIT END
 		wield(user)
 	if(!user.is_holding(parent) && wielded && !require_twohands)
 		unwield(user)
@@ -120,9 +131,15 @@
 /datum/component/two_handed/proc/on_attack_self(datum/source, mob/user)
 	SIGNAL_HANDLER
 
+	//SKYRAT EDIT BEGIN callback checks
+	var/callback_check = TRUE
+	if(is_wieldable)
+		callback_check = is_wieldable.Invoke(source, user)
+
 	if(wielded)
 		unwield(user)
-	else if(user.is_holding(parent))
+	else if(user.is_holding(parent) && callback_check)
+	//SKYRAT EDIT END
 		wield(user)
 
 /**

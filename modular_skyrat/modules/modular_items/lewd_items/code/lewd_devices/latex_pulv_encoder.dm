@@ -7,7 +7,7 @@
 	desc = "Portable Microcomputer Programming Modules for Live Latex Sprayer."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi'
 	icon_state = "encoder_off"
-	var/obj/item/firing_pin/latexpulvmodule/pin = null
+	var/obj/item/latex_pulv_module/pin = null
 	var/programslist = null // Это будет полный список всех возможных программ
 	var/pai_candidates = null // Это будет список всех доступных кандидатов в ИИ
 	var/latexprogram = null // Это будет структура с итоговой программой.

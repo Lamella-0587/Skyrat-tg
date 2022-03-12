@@ -20,12 +20,12 @@
 	var/isopened = FALSE // Kit opened / closed state
 
 	//Variabel for store content
-	var/obj/item/book/manual/latex_pulv_manual/note = /obj/item/book/manual/latex_pulv_manual // Stored note
-	var/obj/item/gun/ballistic/revolver/latexpulv/pulv = /obj/item/gun/ballistic/revolver/latexpulv // Stored pulv
-	var/obj/item/ammo_casing/latexbin/bin = /obj/item/ammo_casing/latexbin // Stored latex bin
-	var/obj/item/latex_pulv_encoder/encoder = /obj/item/latex_pulv_encoder // Stored encoder
-	var/obj/item/firing_pin/latexpulvmodule/pin = /obj/item/firing_pin/latexpulvmodule // Stored latex module
-	var/obj/item/reagent_containers/spray/livinglatexdissolver/dissolver = /obj/item/reagent_containers/spray/livinglatexdissolver // Stored dissolver
+	var/obj/item/book/manual/latex_pulv_manual/note
+	var/obj/item/gun/latexpulv/pulv
+	var/obj/item/ammo_casing/latexbin/bin
+	var/obj/item/latex_pulv_encoder/encoder
+	var/obj/item/latex_pulv_module/pin
+	var/obj/item/reagent_containers/spray/livinglatexdissolver/dissolver
 
 	//Overlays
 	var/mutable_appearance/note_overlay = null
@@ -40,18 +40,12 @@
 	. = ..()
 
 	// Create content of kit
-	if(pulv)
-		pulv = new pulv
-	if(bin)
-		bin = new bin
-	if(pin)
-		pin = new pin
-	if(encoder)
-		encoder = new encoder
-	if(note)
-		note = new note
-	if(dissolver)
-		dissolver = new dissolver
+	pulv = new(src)
+	bin = new(src)
+	pin = new(src)
+	encoder = new(src)
+	note = new(src)
+	dissolver = new(src)
 	update_appearance()
 
 	// Create overlays
@@ -175,7 +169,7 @@
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
-		else if(istype(I,/obj/item/firing_pin/latexpulvmodule/))
+		else if(istype(I,/obj/item/latex_pulv_module))
 			if(!pin)
 				if(!encoder)
 					if(!user.transferItemToLoc(I,src))
@@ -211,7 +205,7 @@
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
-		else if(istype(I, /obj/item/gun/ballistic/revolver/latexpulv))
+		else if(istype(I, /obj/item/gun/latexpulv))
 			if(!pulv)
 				if(!pulv.chambered)
 					if(!user.transferItemToLoc(I,src))
