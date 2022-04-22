@@ -553,7 +553,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
-
+				data["aprilFools"] = SSevents.holidays && SSevents.holidays[APRIL_FOOLS]
 				data["alertLevel"] = get_security_level()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
@@ -642,6 +642,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return data
 
 /obj/machinery/computer/communications/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "CommunicationsConsole")
@@ -735,7 +736,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
-/*
+
 /**
  * Call an emergency meeting
  *
@@ -752,7 +753,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		return
 	SScommunications.emergency_meeting(user)
 	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-*/
+
 
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
@@ -882,8 +883,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				shake_camera(crew_member, 15, 1)
 
 			var/datum/game_mode/dynamic/dynamic = SSticker.mode
-			dynamic.create_threat(HACK_THREAT_INJECTION_AMOUNT)
-			dynamic.threat_log += "[worldtime2text()]: Communications console hack by [hacker]. Added [HACK_THREAT_INJECTION_AMOUNT] threat."
+			dynamic.create_threat(HACK_THREAT_INJECTION_AMOUNT, list(dynamic.threat_log, dynamic.roundend_threat_log), "[worldtime2text()]: Communications console hacked by [hacker]")
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
 			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/autotraitor
@@ -891,7 +891,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
 			var/num_agents_created = 0
 			for(var/num_agents in 1 to rand(1, max_number_of_sleepers))
-				// Offset the trheat cost of the sleeper agent(s) we're about to run...
+				// Offset the threat cost of the sleeper agent(s) we're about to run...
 				dynamic.create_threat(initial(sleeper_agent_type.cost))
 				// ...Then try to actually trigger a sleeper agent.
 				if(!dynamic.picking_specific_rule(sleeper_agent_type, TRUE))
@@ -937,7 +937,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 #undef IMPORTANT_ACTION_COOLDOWN
 #undef EMERGENCY_ACCESS_COOLDOWN
-#undef MAX_STATUS_LINE_LENGTH
 #undef STATE_BUYING_SHUTTLE
 #undef STATE_CHANGING_STATUS
 #undef STATE_MAIN

@@ -94,8 +94,8 @@
 
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
-	uniform = /obj/item/clothing/under/rank/prisoner
-	shoes = /obj/item/clothing/shoes/sneakers/orange
+	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
+	shoes = /obj/item/clothing/shoes/sneakers/crimson
 	id = /obj/item/card/id/advanced/prisoner
 
 /datum/outfit/ds2/syndicate
@@ -115,18 +115,18 @@
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/utility/eng/syndicate
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
-	uniform = /obj/item/clothing/under/utility/sci/syndicate
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
-	uniform = /obj/item/clothing/under/utility/med/syndicate
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 
 /datum/outfit/ds2/syndicate/masteratarms
@@ -137,6 +137,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -152,6 +153,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
@@ -192,7 +194,7 @@
 
 /datum/outfit/freighter_crew
 	name = "Freighter Crew"
-	uniform = /obj/item/clothing/under/rank/cargo/casualman
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	shoes = /obj/item/clothing/shoes/workboots
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
@@ -213,14 +215,14 @@
 
 /datum/outfit/freighter_excavator
 	name = "Freighter Excavator"
-	uniform = /obj/item/clothing/under/utility/cargo/gorka
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/gorka
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/flashlight/seclite=1,\
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/kinetic_accelerator=1,\
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1,\
 		/obj/item/armament_token/sidearm_blackmarket)
 	r_pocket = /obj/item/storage/bag/ore
@@ -241,7 +243,7 @@
 
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"
-	uniform = /obj/item/clothing/under/utility/cargo/turtleneck
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	shoes = /obj/item/clothing/shoes/workboots
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
@@ -266,7 +268,7 @@
 	quirks_enabled = TRUE
 
 /datum/outfit/tarkon
-	uniform = /obj/item/clothing/under/utility/cargo
+	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -292,7 +294,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
-	uniform = /obj/item/clothing/under/utility/sci
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
 	l_hand = /obj/item/inducer
@@ -304,7 +306,7 @@
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
-	uniform = /obj/item/clothing/under/utility/med
+	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
 	neck = /obj/item/clothing/neck/stethoscope
@@ -316,7 +318,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
 	gloves = /obj/item/clothing/gloves/combat

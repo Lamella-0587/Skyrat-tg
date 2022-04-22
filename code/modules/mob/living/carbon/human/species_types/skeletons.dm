@@ -36,7 +36,17 @@
 	wings_icons = list("Skeleton")
 	//They can technically be in an ERT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	species_cookie = /obj/item/reagent_containers/food/condiment/milk
 	species_language_holder = /datum/language_holder/skeleton
+
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/skeleton,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/skeleton,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/skeleton,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/skeleton,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/skeleton,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/skeleton,
+	)
 
 /datum/species/skeleton/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
@@ -75,3 +85,15 @@
 					H.emote("sigh")
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate * delta_time)
 		return TRUE
+
+/datum/species/skeleton/get_species_description()
+	return "A rattling skeleton! They descend upon Space Station 13 \
+		Every year to spook the crew! \"I've got a BONE to pick with you!\""
+
+/datum/species/skeleton/get_species_lore()
+	return list(
+		"Skeletons want to be feared again! Their presence in media has been destroyed, \
+		or at least that's what they firmly believe. They're always the first thing fought in an RPG, \
+		they're Flanderized into pun rolling JOKES, and it's really starting to get to them. \
+		You could say they're deeply RATTLED. Hah."
+	)

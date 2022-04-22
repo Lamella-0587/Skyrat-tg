@@ -12,12 +12,12 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
-	new /obj/item/cartridge/captain(src)
+	new /obj/item/computer_hardware/hard_drive/role/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -31,13 +31,13 @@
 	..()
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
-	new /obj/item/cartridge/hop(src)
+	new /obj/item/computer_hardware/hard_drive/role/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT ADDITION
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -53,7 +53,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
-	new /obj/item/cartridge/hos(src)
+	new /obj/item/computer_hardware/hard_drive/role/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
@@ -76,12 +76,13 @@
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
 	new /obj/item/radio/headset/headset_sec(src)
-	//new /obj/item/clothing/suit/armor/vest/warden(src) SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/suit/armor/vest/warden(src)
 	//new /obj/item/clothing/head/warden(src) SKYRAT EDIT REMOVAL
 	//new /obj/item/clothing/head/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
-	//new /obj/item/clothing/under/rank/security/warden/formal(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/under/rank/security/warden/formal(src)
+	new /obj/item/clothing/suit/security/warden(src) //SKYRAT ADDITION - FORMAL COAT
 	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)
@@ -103,7 +104,6 @@
 	..()
 	new /obj/item/clothing/suit/armor/vest/security(src) //SKYRAT EDIT CHANGE
 	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT CHANGE
-	new /obj/item/clothing/head/beret/sec(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src) //SKYRAT EDIT ADDITION
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
@@ -119,7 +119,7 @@
 // SKYRAT EDIT CHANGE -- GOOFSEC DEP GUARDS
 /obj/structure/closet/secure_closet/security/cargo
 	name = "\proper customs agent's locker"
-	req_access = list(ACCESS_SEC_DOORS, ACCESS_CARGO)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_CARGO)
 	icon_state = "qm"
 	icon = 'icons/obj/closet.dmi'
 
@@ -136,7 +136,7 @@
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
-	req_access = list(ACCESS_SEC_DOORS, ACCESS_ENGINE_EQUIP)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE_EQUIP)
 	icon_state = "eng_secure"
 	icon = 'icons/obj/closet.dmi'
 
@@ -153,7 +153,7 @@
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
-	req_access = list(ACCESS_SEC_DOORS, ACCESS_RESEARCH)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_RESEARCH)
 	icon_state = "science"
 	icon = 'icons/obj/closet.dmi'
 
@@ -170,7 +170,7 @@
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
-	req_access = list(ACCESS_SEC_DOORS, ACCESS_MEDICAL)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL)
 	icon_state = "med_secure"
 	icon = 'icons/obj/closet.dmi'
 
@@ -188,7 +188,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
-	req_access = list(ACCESS_FORENSICS_LOCKERS)
+	req_access = list(ACCESS_FORENSICS)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -275,7 +275,7 @@
 	anchored = TRUE
 	name = "Secure Evidence Closet"
 	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS)
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()

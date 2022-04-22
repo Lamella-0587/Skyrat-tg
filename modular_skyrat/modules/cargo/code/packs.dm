@@ -57,11 +57,11 @@
 	name = "Mixed Medical Kits"
 	desc = "Contains one of each medical kits for dealing with a variety of injured crewmembers."
 	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/storage/firstaid/toxin,
-					/obj/item/storage/firstaid/o2,
-					/obj/item/storage/firstaid/brute,
-					/obj/item/storage/firstaid/fire,
-					/obj/item/storage/firstaid/regular)
+	contains = list(/obj/item/storage/medkit/toxin,
+					/obj/item/storage/medkit/o2,
+					/obj/item/storage/medkit/brute,
+					/obj/item/storage/medkit/fire,
+					/obj/item/storage/medkit/regular)
 	crate_name = "medical kit crate"
 
 /datum/supply_pack/medical/medipens
@@ -106,6 +106,14 @@
 					/obj/item/weaponcell/medical/burn,
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
+
+/datum/supply_pack/medical/syringe_gun
+	name = "Syringe Gun"
+	desc = "A replacement medical syringe gun."
+	cost = CARGO_CRATE_VALUE * 30
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/gun/syringe)
+	crate_name = "replacement syringe gun crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
@@ -159,6 +167,17 @@
 	contains = list(/obj/item/storage/box/gunset/pepperball,
 					/obj/item/storage/box/gunset/pepperball)
 	crate_name = "pepperball pistol crate"
+	dangerous = TRUE
+	
+/datum/supply_pack/security/cmg1
+	name = "NT CMG-1 Value-Pack"
+	desc = "Contains two CMG-1 Weapon kits, for all your automatic-fire needs."
+	cost = CARGO_CRATE_VALUE * 15
+	access_view = ACCESS_ARMORY
+	contains = list(
+		/obj/item/storage/box/gunset/cmg,
+		/obj/item/storage/box/gunset/cmg,
+		)
 	dangerous = TRUE
 
 /datum/supply_pack/security/wildcat
@@ -234,7 +253,7 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
-	
+
 /datum/supply_pack/security/deployablebarricades
 	name = "C.U.C.K.S Deployable Barricades"
 	desc = "Two cases of deployable barricades, for all your fortification needs."
